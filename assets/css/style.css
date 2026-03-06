@@ -867,6 +867,47 @@ body.active { overflow: hidden; }
 
 .food-menu-card .del { color: var(--gray-x-11-gray); }
 
+/* See More Card */
+.see-more-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 280px;
+  cursor: pointer;
+  transition: var(--transition-2);
+  border: 2px dashed var(--deep-saffron);
+  background-color: var(--white);
+}
+
+.see-more-card:hover {
+  background-color: var(--deep-saffron);
+}
+
+.see-more-card:hover .card-title,
+.see-more-card:hover .card-desc,
+.see-more-card:hover .see-more-icon {
+  color: var(--white);
+}
+
+.see-more-content {
+  text-align: center;
+}
+
+.see-more-icon {
+  font-size: 5rem;
+  color: var(--deep-saffron);
+  margin-block-end: 10px;
+  transition: var(--transition-2);
+}
+
+.see-more-card .card-title {
+  transition: var(--transition-2);
+}
+
+.see-more-card .card-desc {
+  transition: var(--transition-2);
+}
+
 
 
 

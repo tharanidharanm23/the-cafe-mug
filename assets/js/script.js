@@ -98,16 +98,24 @@ window.addEventListener("scroll", function () {
  */
 
 const filterBtns = document.querySelectorAll("[data-filter]");
-const menuItems = document.querySelectorAll("#foodMenuList > li");
+const menuItems = document.querySelectorAll("#foodMenuList > li:not(.see-more-item)");
 const menuSearchInput = document.getElementById("menuSearchInput");
 const noResultsMsg = document.getElementById("noResultsMsg");
+const seeMoreCard = document.getElementById("seeMoreCard");
+const seeMoreBtn = document.getElementById("seeMoreBtn");
 
+const INITIAL_LIMIT = 6;
 let activeFilter = "all";
+let showAll = false;
 
 function filterAndSearch() {
   const query = menuSearchInput.value.toLowerCase().trim();
   let visibleCount = 0;
+  let shownCount = 0;
+  const seenCategories = new Set();
 
+  // First pass: count total matching items
+  const matchingItems = [];
   menuItems.forEach(function (item) {
     const category = item.dataset.category;
     const title = item.querySelector(".card-title").textContent.toLowerCase();
@@ -117,23 +125,70 @@ function filterAndSearch() {
     const matchesSearch = !query || title.includes(query) || subcategory.includes(query);
 
     if (matchesFilter && matchesSearch) {
-      item.style.display = "";
-      visibleCount++;
+      matchingItems.push(item);
     } else {
       item.style.display = "none";
     }
   });
 
+  // Second pass: show items with limit logic
+  matchingItems.forEach(function (item) {
+    if (showAll || query || activeFilter !== "all") {
+      item.style.display = "";
+      visibleCount++;
+    } else {
+      // For "All": pick one from each category first, up to limit
+      const category = item.dataset.category;
+      if (!seenCategories.has(category) && shownCount < INITIAL_LIMIT) {
+        seenCategories.add(category);
+        item.style.display = "";
+        shownCount++;
+        visibleCount++;
+      } else {
+        item.style.display = "none";
+      }
+    }
+  });
+
+  // Show/hide "See More" card (only for "All" filter)
+  const hasMore = activeFilter === "all" && matchingItems.length > INITIAL_LIMIT && !showAll && !query;
+  seeMoreCard.style.display = hasMore ? "" : "none";
+
   noResultsMsg.style.display = visibleCount === 0 ? "" : "none";
 }
+
+seeMoreBtn.addEventListener("click", function () {
+  showAll = true;
+  filterAndSearch();
+});
 
 filterBtns.forEach(function (btn) {
   btn.addEventListener("click", function () {
     filterBtns.forEach(function (b) { b.classList.remove("active"); });
     btn.classList.add("active");
     activeFilter = btn.dataset.filter;
+    showAll = false;
     filterAndSearch();
   });
 });
 
 menuSearchInput.addEventListener("input", filterAndSearch);
+
+// Apply initial limit on page load
+filterAndSearch();
+
+
+
+/**
+ * Order Now button - redirect to WhatsApp
+ */
+
+document.addEventListener("click", function (e) {
+  const btn = e.target.closest(".food-menu-btn");
+  if (!btn) return;
+
+  const card = btn.closest(".food-menu-card");
+  const foodName = card.querySelector(".card-title").textContent.trim();
+  const message = encodeURIComponent("Hey CafeMug , I would like to order " + foodName);
+  window.open("https://wa.me/918438111014?text=" + message, "_blank");
+});
