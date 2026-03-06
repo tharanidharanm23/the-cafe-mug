@@ -350,7 +350,7 @@ body.active { overflow: hidden; }
   --btn-color: var(--champagne-pink);
 
   position: fixed;
-  top: -86px;
+  top: -70px;
   background-color: transparent;
   box-shadow: none;
 }
@@ -361,7 +361,7 @@ body.active { overflow: hidden; }
 }
 
 .header .container{
-  height: 90px;       /* navbar height */
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -383,7 +383,7 @@ body.active { overflow: hidden; }
 }
 
 .logo img{
-  height: 200px;
+  height: 70px;
   width: auto;
   object-fit: contain;
 }
@@ -433,14 +433,14 @@ body.active { overflow: hidden; }
   background-color: var(--white);
   padding-inline: 20px;
   box-shadow: var(--shadow-1);
-  height: 0;
+  max-height: 0;
   overflow: hidden;
   visibility: hidden;
-  transition: var(--transition-1);
+  transition: max-height 0.35s ease, visibility 0.35s;
 }
 
 .navbar.active {
-  height: 236px;
+  max-height: 300px;
   visibility: visible;
 }
 
@@ -1786,11 +1786,16 @@ textarea.input-field {
 
   .nav-toggle-btn { display: none; }
 
-.header .container{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+  .header .container {
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo img {
+    height: 80px;
+  }
 
   .navbar,
   .navbar.active {
