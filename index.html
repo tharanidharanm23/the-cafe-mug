@@ -2940,33 +2940,49 @@
 
 
       <!-- 
-        - #CTA
+        - #BRANCHES
       -->
 
-      <section class="section section-divider white cta" style="background-image: url('./assets/images/hero-bg.jpg')">
+      <section class="section section-divider white branches" style="background-image: url('./assets/images/hero-bg.jpg')">
         <div class="container">
 
-          <div class="cta-content">
+          <p class="section-subtitle">Our Branches</p>
 
-            <h2 class="h2 section-title">
-              The CafeMug Have Excellent Of
-              <span class="span"> Quality Foods!</span>
-            </h2>
+          <h2 class="h2 section-title branches-title">
+            Visit Us At Our <span class="span">Locations</span>
+          </h2>
 
-            <p class="section-text">
-              CafeMug in Tiruppur attracts many college students and young visitors who gather there for burgers pizzas and coffee while it is also known that the cafe is run with friendly service and welcoming ambience daily.
-            </p>
+          <div class="branches-grid">
 
-            <a href="https://www.swiggy.com/city/tirupur/cafe-mug-veerapandi-tiruppur-rest167517" target="_blank" rel="noopener noreferrer" class="btn btn-hover" style="display:inline-block;text-decoration:none;width:auto;line-height:45px;">Order Now - Swiggy</a>
+            <!-- Palladam Road Branch -->
+            <div class="branch-card">
+              <div class="branch-map">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.0!2d77.3449463!3d11.0873856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba9077f11ff3fbf%3A0x768ab1bf09202193!2sCafemug!5e0!3m2!1sen!2sin!4v1709000000000"
+                  width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade" title="CafeMug Palladam Road Branch"></iframe>
+              </div>
+              <h3 class="h3 branch-name">Palladam Road Branch</h3>
+              <p class="branch-address">No.9, Gopal Complex, Palladam Main Rd, Thennampalayam, Tiruppur, Tamil Nadu 641604</p>
+              <a href="https://www.google.com/maps/place/Cafemug/@11.0873856,77.3449463,17z/data=!3m1!4b1!4m6!3m5!1s0x3ba9077f11ff3fbf:0x768ab1bf09202193!8m2!3d11.0873803!4d77.3475266!16s%2Fg%2F11h75pv_pn"
+                target="_blank" rel="noopener noreferrer" class="btn btn-hover branch-btn">Directions</a>
+            </div>
+
+            <!-- Kangayam Road Branch -->
+            <div class="branch-card">
+              <div class="branch-map">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.0!2d77.3553607!3d11.1021521!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba9076b90fa953b%3A0xc07431be1cf7cb81!2sCafemug!5e0!3m2!1sen!2sin!4v1709000000001"
+                  width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade" title="CafeMug Kangayam Road Branch"></iframe>
+              </div>
+              <h3 class="h3 branch-name">Kangayam Road Branch</h3>
+              <p class="branch-address">102, Chinnathottam Main Road, No, Kangayam Rd, K N P Colony, Bavani Nagar, Tiruppur, Pudhukkadu, Tamil Nadu 641604</p>
+              <a href="https://www.google.com/maps/place/Cafemug/@11.1021521,77.3553607,17z/data=!3m1!4b1!4m6!3m5!1s0x3ba9076b90fa953b:0xc07431be1cf7cb81!8m2!3d11.1021468!4d77.357941!16s%2Fg%2F11xynvlsfc"
+                target="_blank" rel="noopener noreferrer" class="btn btn-hover branch-btn">Directions</a>
+            </div>
+
           </div>
-
-          <figure class="cta-banner">
-            <img src="./assets/images/cta-banner.png" width="700" height="637" loading="lazy" alt="Burger"
-              class="w-100 cta-img">
-
-            <img src="./assets/images/sale-shape.png" width="216" height="226" loading="lazy"
-              alt="get up to 50% off now" class="abs-img scale-up-anim">
-          </figure>
 
         </div>
       </section>
@@ -3460,7 +3476,7 @@
           </li>
 
           <li>
-            <address class="footer-list-item">Palladam Road : No:447,spt complex,Thennampalayam,palladam road,Tirupur-641604</address>
+            <p class="footer-list-item">GST NO : 33GCEPS0991C1ZM </p>
           </li>
 
         </ul>
@@ -3485,39 +3501,69 @@
 
         </ul>
 
-        <form action="" class="footer-form">
+        <div class="footer-form">
 
-          <p class="footer-list-title">Book a Table</p>
-
-          <div class="input-wrapper">
-
-            <input type="text" name="full_name" required placeholder="Your Name" aria-label="Your Name"
-              class="input-field">
-
-            <input type="email" name="email_address" required placeholder="Email" aria-label="Email"
-              class="input-field">
-
+          <div class="form-tab-wrapper">
+            <button class="form-tab active" data-form-tab="book">Book Table</button>
+            <button class="form-tab" data-form-tab="contact">Contact Us</button>
           </div>
 
-          <div class="input-wrapper">
+          <!-- Book Table Form -->
+          <form id="bookTableForm" class="footer-tab-form active">
 
-            <select name="total_person" aria-label="Total person" class="input-field">
-              <option value="person">Person</option>
-              <option value="2 person">2 Person</option>
-              <option value="3 person">3 Person</option>
-              <option value="4 person">4 Person</option>
-              <option value="5 person">5 Person</option>
-            </select>
+            <div class="input-wrapper">
+              <input type="text" name="full_name" required placeholder="Your Name" aria-label="Your Name"
+                class="input-field">
+              <input type="tel" name="phone" required placeholder="Phone Number" aria-label="Phone Number"
+                class="input-field">
+            </div>
 
-            <input type="date" name="booking_date" aria-label="Reservation date" class="input-field">
+            <input type="email" name="email" placeholder="Email (Optional)" aria-label="Email"
+              class="input-field" style="margin-block-end:10px;">
 
-          </div>
+            <div class="input-wrapper">
+              <select name="total_person" aria-label="Total person" class="input-field">
+                <option value="">No. of Persons</option>
+                <option value="1">1 Person</option>
+                <option value="2">2 Persons</option>
+                <option value="3">3 Persons</option>
+                <option value="4">4 Persons</option>
+                <option value="5">5 Persons</option>
+                <option value="6">6 Persons</option>
+              </select>
+              <input type="date" name="booking_date" required aria-label="Reservation date" class="input-field">
+            </div>
 
-          <textarea name="message" required placeholder="Message" aria-label="Message" class="input-field"></textarea>
+            <div class="input-wrapper">
+              <input type="time" name="booking_time" required aria-label="Reservation time" class="input-field">
+            </div>
 
-          <button type="submit" class="btn">Book a Table</button>
+            <textarea name="message" placeholder="Message (Optional)" aria-label="Message" class="input-field"></textarea>
 
-        </form>
+            <button type="submit" class="btn">Book Table</button>
+
+          </form>
+
+          <!-- Contact Us Form -->
+          <form id="contactUsForm" class="footer-tab-form">
+
+            <div class="input-wrapper">
+              <input type="text" name="full_name" required placeholder="Your Name" aria-label="Your Name"
+                class="input-field">
+              <input type="tel" name="phone" required placeholder="Phone Number" aria-label="Phone Number"
+                class="input-field">
+            </div>
+
+            <input type="email" name="email" placeholder="Email (Optional)" aria-label="Email"
+              class="input-field" style="margin-block-end:10px;">
+
+            <textarea name="message" required placeholder="Your Message" aria-label="Message" class="input-field"></textarea>
+
+            <button type="submit" class="btn">Send Message</button>
+
+          </form>
+
+        </div>
 
       </div>
     </div>

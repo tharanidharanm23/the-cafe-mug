@@ -192,3 +192,70 @@ document.addEventListener("click", function (e) {
   const message = encodeURIComponent("Hey CafeMug , I would like to order " + foodName);
   window.open("https://wa.me/918438111014?text=" + message, "_blank");
 });
+
+
+
+/**
+ * Footer form tabs & WhatsApp send
+ */
+
+const formTabs = document.querySelectorAll("[data-form-tab]");
+const bookForm = document.getElementById("bookTableForm");
+const contactForm = document.getElementById("contactUsForm");
+
+formTabs.forEach(function (tab) {
+  tab.addEventListener("click", function () {
+    formTabs.forEach(function (t) { t.classList.remove("active"); });
+    tab.classList.add("active");
+
+    if (tab.dataset.formTab === "book") {
+      bookForm.classList.add("active");
+      contactForm.classList.remove("active");
+    } else {
+      contactForm.classList.add("active");
+      bookForm.classList.remove("active");
+    }
+  });
+});
+
+bookForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+  const f = new FormData(bookForm);
+  const name = f.get("full_name") || "";
+  const phone = f.get("phone") || "";
+  const email = f.get("email") || "";
+  const persons = f.get("total_person") || "";
+  const date = f.get("booking_date") || "";
+  const time = f.get("booking_time") || "";
+  const msg = f.get("message") || "";
+
+  let text = "📋 *Table Booking Request*\n\n";
+  text += "👤 *Name:* " + name + "\n";
+  text += "📞 *Phone:* " + phone + "\n";
+  if (email) text += "📧 *Email:* " + email + "\n";
+  if (persons) text += "👥 *Persons:* " + persons + "\n";
+  text += "📅 *Date:* " + date + "\n";
+  text += "🕐 *Time:* " + time + "\n";
+  if (msg) text += "💬 *Message:* " + msg + "\n";
+
+  window.open("https://wa.me/918438111014?text=" + encodeURIComponent(text), "_blank");
+  bookForm.reset();
+});
+
+contactForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+  const f = new FormData(contactForm);
+  const name = f.get("full_name") || "";
+  const phone = f.get("phone") || "";
+  const email = f.get("email") || "";
+  const msg = f.get("message") || "";
+
+  let text = "📩 *Contact Us Message*\n\n";
+  text += "👤 *Name:* " + name + "\n";
+  text += "📞 *Phone:* " + phone + "\n";
+  if (email) text += "📧 *Email:* " + email + "\n";
+  text += "💬 *Message:* " + msg + "\n";
+
+  window.open("https://wa.me/918438111014?text=" + encodeURIComponent(text), "_blank");
+  contactForm.reset();
+});

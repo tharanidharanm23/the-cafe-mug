@@ -960,6 +960,79 @@ body.active { overflow: hidden; }
 
 
 
+/*-----------------------------------*\
+  #BRANCHES
+\*-----------------------------------*/
+
+.branches {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.branches::before {
+  bottom: auto;
+  top: 0;
+  background-image: url("../images/shape-grey.png");
+  transform: scaleY(-1);
+}
+
+.branches-title {
+  color: var(--white);
+  line-height: 1.5;
+  letter-spacing: -2px;
+  margin-inline: auto;
+  margin-block-end: 40px;
+}
+
+.branches .section-subtitle {
+  color: var(--deep-saffron);
+}
+
+.branches-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+}
+
+.branch-card {
+  background-color: var(--white);
+  border-radius: 16px;
+  overflow: hidden;
+  padding-block-end: 30px;
+  box-shadow: 0 2px 10px hsla(0, 0%, 0%, 0.1);
+}
+
+.branch-map {
+  width: 100%;
+  line-height: 0;
+}
+
+.branch-map iframe {
+  border-radius: 16px 16px 0 0;
+}
+
+.branch-name {
+  margin-block: 20px 10px;
+  color: var(--rich-black-fogra-29);
+}
+
+.branch-address {
+  color: var(--sonic-silver);
+  font-size: var(--fs-4);
+  padding-inline: 20px;
+  margin-block-end: 20px;
+  line-height: 1.6;
+}
+
+.branch-btn {
+  display: inline-block;
+  text-decoration: none;
+  line-height: 45px;
+}
+
 
 
 /*-----------------------------------*\
@@ -1324,6 +1397,41 @@ body.active { overflow: hidden; }
   box-shadow: var(--shadow-2);
 }
 
+.form-tab-wrapper {
+  display: flex;
+  gap: 0;
+  margin-block-end: 20px;
+  border: 1px solid var(--cultured);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.form-tab {
+  flex: 1;
+  padding: 10px;
+  font-family: var(--ff-rubik);
+  font-size: var(--fs-4);
+  font-weight: var(--fw-500);
+  background-color: var(--cultured);
+  color: var(--sonic-silver);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition-1);
+}
+
+.form-tab.active {
+  background-color: var(--deep-saffron);
+  color: var(--white);
+}
+
+.footer-tab-form {
+  display: none;
+}
+
+.footer-tab-form.active {
+  display: block;
+}
+
 .input-wrapper {
   display: grid;
   gap: 10px;
@@ -1575,6 +1683,14 @@ textarea.input-field {
   .cta-img { transform: scale(1.3) translate(90px, 20px); }
 
 
+  /**
+   * BRANCHES
+   */
+
+  .branches-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
 
   /**
    * DELIVERY
@@ -1788,7 +1904,7 @@ textarea.input-field {
 
   .footer-top .container { grid-template-columns: 1fr 1fr 1fr 1.6fr; }
 
-  .footer-form { margin-block-start: -170px; }
+  .footer-form { margin-block-start: 0; }
 
 
 
