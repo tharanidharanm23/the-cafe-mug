@@ -204,14 +204,17 @@ body.active { overflow: hidden; }
 .h4 { font-size: var(--fs-3); }
 
 .btn {
+  display: inline-block;
   background-color: var(--bg-color, var(--deep-saffron));
   color: var(--white);
   font-family: var(--ff-rubik);
   font-size: var(--fs-4);
   font-weight: var(--fw-500);
   height: var(--height, 45px);
+  line-height: var(--height, 45px);
   padding-inline: var(--padding-inline, 35px);
   transition: var(--transition-1);
+  text-decoration: none;
 }
 
 .btn-hover {
@@ -383,7 +386,7 @@ body.active { overflow: hidden; }
 }
 
 .logo img{
-  height: 70px;
+  height: 90px;
   width: auto;
   object-fit: contain;
 }
@@ -1794,7 +1797,7 @@ textarea.input-field {
   }
 
   .logo img {
-    height: 80px;
+    height: 110px;
   }
 
   .navbar,
