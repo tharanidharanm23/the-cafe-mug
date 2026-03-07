@@ -66,7 +66,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="#blog" class="navbar-link" data-nav-link>Blog</a>
+            <a href="#reviews" class="navbar-link" data-nav-link>Reviews</a>
           </li>
 
           <li class="nav-item">
@@ -328,61 +328,32 @@
 
 
       <!-- 
-        - #ABOUT
+        - #ABOUT CAROUSEL
       -->
 
-      <section class="section section-divider gray about" id="about">
+      <section class="section section-divider gray about-carousel-section" id="about">
         <div class="container">
 
-          <div class="about-banner">
-            <img src="./assets/images/about-banner.png" width="509" height="459" loading="lazy" alt="Burger with Drinks"
-              class="w-100 about-img">
+          <h2 class="h2 section-title">
+            Visit our <span class="span">CafeMug</span>
+          </h2>
+          <br>
 
-            <img src="./assets/images/sale-shape-red.png" width="216" height="226" alt="get up to 50% off now"
-              class="abs-img scale-up-anim">
-          </div>
-
-          <div class="about-content">
-
-            <h2 class="h2 section-title">
-              Caferio, Burgers, and Best Pizzas
-              <span class="span">in Town!</span>
-            </h2>
-
-            <p class="section-text">
-              CafeMug in Tiruppur attracts many college students and young visitors who gather there for burgers pizzas and coffee while it is also known that the cafe is run with friendly service and welcoming ambience daily.
-            </p>
-
-            <ul class="about-list">
-
-              <li class="about-item">
-                <ion-icon name="checkmark-outline"></ion-icon>
-
-                <span class="span">Delicious & Healthy Foods</span>
-              </li>
-
-              <li class="about-item">
-                <ion-icon name="checkmark-outline"></ion-icon>
-
-                <span class="span">Spacific Family And Kids Zone</span>
-              </li>
-
-              <li class="about-item">
-                <ion-icon name="checkmark-outline"></ion-icon>
-
-                <span class="span">Music & Other Facilities</span>
-              </li>
-
-              <li class="about-item">
-                <ion-icon name="checkmark-outline"></ion-icon>
-
-                <span class="span">Fastest Food Home Delivery</span>
-              </li>
-
-            </ul>
-
-            <button class="btn btn-hover">Order Now</button>
-
+          <div class="carousel-wrapper">
+            <div class="carousel-track">
+              <img src="./assets/images/carosel-1.png" alt="Slide 1" class="carousel-slide active">
+              <img src="./assets/images/carosel-2.png" alt="Slide 2" class="carousel-slide">
+              <img src="./assets/images/carosel-3.png" alt="Slide 3" class="carousel-slide">
+              <img src="./assets/images/carosel-4.png" alt="Slide 4" class="carousel-slide">
+            </div>
+            <button class="carousel-btn carousel-prev" aria-label="Previous slide">&#10094;</button>
+            <button class="carousel-btn carousel-next" aria-label="Next slide">&#10095;</button>
+            <div class="carousel-dots">
+              <button class="carousel-dot active" data-slide="0" aria-label="Slide 1"></button>
+              <button class="carousel-dot" data-slide="1" aria-label="Slide 2"></button>
+              <button class="carousel-dot" data-slide="2" aria-label="Slide 3"></button>
+              <button class="carousel-dot" data-slide="3" aria-label="Slide 4"></button>
+            </div>
           </div>
 
         </div>
@@ -2940,6 +2911,88 @@
 
 
       <!-- 
+        - #COMBO DEALS
+      -->
+
+      <section class="section section-divider white combo-deals">
+        <div class="container">
+
+          <p class="section-subtitle">Best Value</p>
+
+          <h2 class="h2 section-title">
+            <span class="span">CafeMug</span> Combo Deals
+          </h2>
+
+          <div class="combo-grid">
+
+            <div class="combo-card">
+              <div class="combo-badge">Combo 1</div>
+              <h3 class="h3 combo-name">Starter Combo</h3>
+              <ul class="combo-items">
+                <li>Aloo Burger</li>
+                <li>French Fries</li>
+                <li>Thumsup or Sprite</li>
+              </ul>
+              <div class="combo-price">₹99</div>
+            </div>
+
+            <div class="combo-card">
+              <div class="combo-badge">Combo 2</div>
+              <h3 class="h3 combo-name">Pizza Combo</h3>
+              <ul class="combo-items">
+                <li>Fresh Delight Pizza</li>
+                <li>French Fries</li>
+                <li>Thumsup or Sprite</li>
+              </ul>
+              <div class="combo-price">₹159</div>
+            </div>
+
+            <div class="combo-card">
+              <div class="combo-badge">Combo 3</div>
+              <h3 class="h3 combo-name">Snack Combo</h3>
+              <ul class="combo-items">
+                <li>Corn Sandwich</li>
+                <li>Butter Sweet Corn</li>
+                <li>Garlic Bites</li>
+                <li>Lemon Iced Tea</li>
+              </ul>
+              <div class="combo-price">₹199</div>
+            </div>
+
+            <div class="combo-card">
+              <div class="combo-badge">Combo 4</div>
+              <h3 class="h3 combo-name">Paneer Feast</h3>
+              <ul class="combo-items">
+                <li>Veg Paneer Burger</li>
+                <li>French Fries</li>
+                <li>Corn Momos</li>
+                <li>Thumsup or Sprite</li>
+              </ul>
+              <div class="combo-price">₹249</div>
+            </div>
+
+            <div class="combo-card">
+              <div class="combo-badge">Combo 5</div>
+              <h3 class="h3 combo-name">Chicken Feast</h3>
+              <ul class="combo-items">
+                <li>Creamy Chicken Burger</li>
+                <li>French Fries</li>
+                <li>Chicken Momos</li>
+                <li>Thumsup or Sprite</li>
+              </ul>
+              <div class="combo-price">₹249</div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
         - #BRANCHES
       -->
 
@@ -3026,129 +3079,7 @@
 
 
 
-      <!-- 
-        - #TESTIMONIALS
-      -->
 
-      <section class="section section-divider white testi">
-        <div class="container">
-
-          <p class="section-subtitle">Testimonials</p>
-
-          <h2 class="h2 section-title">
-            Our Customers <span class="span">Reviews</span>
-          </h2>
-
-          <p class="section-text">
-            Food is any substance consumed to provide nutritional
-            support for an organism.
-          </p>
-
-          <ul class="testi-list has-scrollbar">
-
-            <li class="testi-item">
-              <div class="testi-card">
-
-                <div class="profile-wrapper">
-
-                  <figure class="avatar">
-                    <img src="./assets/images/avatar-1.jpg" width="80" height="80" loading="lazy" alt="Robert William">
-                  </figure>
-
-                  <div>
-                    <h3 class="h4 testi-name">Robert William</h3>
-
-                    <p class="testi-title">CEO Kingfisher</p>
-                  </div>
-
-                </div>
-
-                <blockquote class="testi-text">
-                  "I would be lost without restaurant. I would like to personally thank you for your outstanding
-                  product."
-                </blockquote>
-
-                <div class="rating-wrapper">
-                  <ion-icon name="star"></ion-icon>
-                  <ion-icon name="star"></ion-icon>
-                  <ion-icon name="star"></ion-icon>
-                  <ion-icon name="star"></ion-icon>
-                  <ion-icon name="star"></ion-icon>
-                </div>
-
-              </div>
-            </li>
-
-            <li class="testi-item">
-              <div class="testi-card">
-
-                <div class="profile-wrapper">
-
-                  <figure class="avatar">
-                    <img src="./assets/images/avatar-2.jpg" width="80" height="80" loading="lazy" alt="Thomas Josef">
-                  </figure>
-
-                  <div>
-                    <h3 class="h4 testi-name">Thomas Josef</h3>
-
-                    <p class="testi-title">CEO Getforce</p>
-                  </div>
-
-                </div>
-
-                <blockquote class="testi-text">
-                  "I would be lost without restaurant. I would like to personally thank you for your outstanding
-                  product."
-                </blockquote>
-
-                <div class="rating-wrapper">
-                  <ion-icon name="star"></ion-icon>
-                  <ion-icon name="star"></ion-icon>
-                  <ion-icon name="star"></ion-icon>
-                  <ion-icon name="star"></ion-icon>
-                  <ion-icon name="star"></ion-icon>
-                </div>
-
-              </div>
-            </li>
-
-            <li class="testi-item">
-              <div class="testi-card">
-
-                <div class="profile-wrapper">
-
-                  <figure class="avatar">
-                    <img src="./assets/images/avatar-3.jpg" width="80" height="80" loading="lazy" alt="Charles Richard">
-                  </figure>
-
-                  <div>
-                    <h3 class="h4 testi-name">Charles Richard</h3>
-
-                    <p class="testi-title">CEO Angela</p>
-                  </div>
-
-                </div>
-
-                <blockquote class="testi-text">
-                  "I would be lost without restaurant. I would like to personally thank you for your outstanding
-                  product."
-                </blockquote>
-
-                <div class="rating-wrapper">
-                  <ion-icon name="star"></ion-icon>
-                  <ion-icon name="star"></ion-icon>
-                  <ion-icon name="star"></ion-icon>
-                  <ion-icon name="star"></ion-icon>
-                  <ion-icon name="star"></ion-icon>
-                </div>
-
-              </div>
-            </li>
-
-          </ul>
-
-        </div>
-      </section>
 
 
 
@@ -3244,166 +3175,65 @@
 
 
       <!-- 
-        - #BLOG
+        - #GOOGLE REVIEWS & STATS
       -->
 
-      <section class="section section-divider white blog" id="blog">
+      <section class="section section-divider white google-reviews" id="reviews">
         <div class="container">
 
-          <p class="section-subtitle">Latest Blog Posts</p>
+          <p class="section-subtitle">Loved By Customers</p>
 
           <h2 class="h2 section-title">
-            This Is All About <span class="span">Foods</span>
+            What People Say On <span class="span">Google</span>
           </h2>
 
-          <p class="section-text">
-            Food is any substance consumed to provide nutritional support for an organism.
-          </p>
+          <div class="reviews-wrapper">
 
-          <ul class="blog-list">
-
-            <li>
-              <div class="blog-card">
-
-                <div class="card-banner">
-                  <img src="./assets/images/blog-1.jpg" width="600" height="390" loading="lazy"
-                    alt="What Do You Think About Cheese Pizza Recipes?" class="w-100">
-
-                  <div class="badge">Pizza</div>
-                </div>
-
-                <div class="card-content">
-
-                  <div class="card-meta-wrapper">
-
-                    <a href="#" class="card-meta-link">
-                      <ion-icon name="calendar-outline"></ion-icon>
-
-                      <time class="meta-info" datetime="2022-01-01">Jan 01 2022</time>
-                    </a>
-
-                    <a href="#" class="card-meta-link">
-                      <ion-icon name="person-outline"></ion-icon>
-
-                      <p class="meta-info">Jonathan Smith</p>
-                    </a>
-
-                  </div>
-
-                  <h3 class="h3">
-                    <a href="#" class="card-title">What Do You Think About Cheese Pizza Recipes?</a>
-                  </h3>
-
-                  <p class="card-text">
-                    Financial experts support or help you to to find out which way you can raise your funds more...
-                  </p>
-
-                  <a href="#" class="btn-link">
-                    <span>Read More</span>
-
-                    <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
-                  </a>
-
-                </div>
-
+            <div class="google-review-card">
+              <div class="google-logo">
+                <span class="google-g">G</span>
+                <span>Google Reviews</span>
               </div>
-            </li>
-
-            <li>
-              <div class="blog-card">
-
-                <div class="card-banner">
-                  <img src="./assets/images/blog-2.jpg" width="600" height="390" loading="lazy"
-                    alt="Making Chicken Strips With New Delicious Ingridents." class="w-100">
-
-                  <div class="badge">Burger</div>
+              <div class="google-rating">
+                <span class="rating-number">4.5</span>
+                <div class="stars">
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star-half"></ion-icon>
                 </div>
-
-                <div class="card-content">
-
-                  <div class="card-meta-wrapper">
-
-                    <a href="#" class="card-meta-link">
-                      <ion-icon name="calendar-outline"></ion-icon>
-
-                      <time class="meta-info" datetime="2022-01-01">Jan 01 2022</time>
-                    </a>
-
-                    <a href="#" class="card-meta-link">
-                      <ion-icon name="person-outline"></ion-icon>
-
-                      <p class="meta-info">Jonathan Smith</p>
-                    </a>
-
-                  </div>
-
-                  <h3 class="h3">
-                    <a href="#" class="card-title">Making Chicken Strips With New Delicious Ingridents.</a>
-                  </h3>
-
-                  <p class="card-text">
-                    Financial experts support or help you to to find out which way you can raise your funds more...
-                  </p>
-
-                  <a href="#" class="btn-link">
-                    <span>Read More</span>
-
-                    <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
-                  </a>
-
-                </div>
-
+                <span class="review-count">500+ Reviews</span>
               </div>
-            </li>
+              <a href="https://www.google.com/maps/place/Cafemug/@11.0873856,77.3449463,17z/data=!3m1!4b1!4m6!3m5!1s0x3ba9077f11ff3fbf:0x768ab1bf09202193!8m2!3d11.0873803!4d77.3475266!16s%2Fg%2F11h75pv_pn"
+                target="_blank" rel="noopener noreferrer" class="btn btn-hover">See All Reviews</a>
+            </div>
 
-            <li>
-              <div class="blog-card">
+          </div>
 
-                <div class="card-banner">
-                  <img src="./assets/images/blog-3.jpg" width="600" height="390" loading="lazy"
-                    alt="Innovative Hot Chessyraw Pasta Make Creator Fact." class="w-100">
+          <div class="counter-stats">
 
-                  <div class="badge">Chicken</div>
-                </div>
+            <div class="stat-item">
+              <span class="stat-number" data-target="5000">5000+</span>
+              <p class="stat-label">Happy Customers</p>
+            </div>
 
-                <div class="card-content">
+            <div class="stat-item">
+              <span class="stat-number">2</span>
+              <p class="stat-label">Branches</p>
+            </div>
 
-                  <div class="card-meta-wrapper">
+            <div class="stat-item">
+              <span class="stat-number">100+</span>
+              <p class="stat-label">Menu Items</p>
+            </div>
 
-                    <a href="#" class="card-meta-link">
-                      <ion-icon name="calendar-outline"></ion-icon>
+            <div class="stat-item">
+              <span class="stat-number">3+</span>
+              <p class="stat-label">Years Serving</p>
+            </div>
 
-                      <time class="meta-info" datetime="2022-01-01">Jan 01 2022</time>
-                    </a>
-
-                    <a href="#" class="card-meta-link">
-                      <ion-icon name="person-outline"></ion-icon>
-
-                      <p class="meta-info">Jonathan Smith</p>
-                    </a>
-
-                  </div>
-
-                  <h3 class="h3">
-                    <a href="#" class="card-title">Innovative Hot Chessyraw Pasta Make Creator Fact.</a>
-                  </h3>
-
-                  <p class="card-text">
-                    Financial experts support or help you to to find out which way you can raise your funds more...
-                  </p>
-
-                  <a href="#" class="btn-link">
-                    <span>Read More</span>
-
-                    <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
-                  </a>
-
-                </div>
-
-              </div>
-            </li>
-
-          </ul>
+          </div>
 
         </div>
       </section>

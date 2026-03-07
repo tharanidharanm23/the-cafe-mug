@@ -3,6 +3,62 @@
 
 
 /**
+ * About section carousel
+ */
+
+const carouselSlides = document.querySelectorAll(".carousel-slide");
+const carouselDots = document.querySelectorAll(".carousel-dot");
+let currentSlide = 0;
+let carouselInterval;
+
+function showSlide(index) {
+  carouselSlides.forEach(s => s.classList.remove("active"));
+  carouselDots.forEach(d => d.classList.remove("active"));
+  carouselSlides[index].classList.add("active");
+  carouselDots[index].classList.add("active");
+  currentSlide = index;
+}
+
+function nextSlide() {
+  showSlide((currentSlide + 1) % carouselSlides.length);
+}
+
+function startCarousel() {
+  carouselInterval = setInterval(nextSlide, 3000);
+}
+
+carouselDots.forEach(dot => {
+  dot.addEventListener("click", function () {
+    clearInterval(carouselInterval);
+    showSlide(Number(this.dataset.slide));
+    startCarousel();
+  });
+});
+
+const prevBtn = document.querySelector(".carousel-prev");
+const nextBtn = document.querySelector(".carousel-next");
+
+if (prevBtn) {
+  prevBtn.addEventListener("click", function () {
+    clearInterval(carouselInterval);
+    showSlide((currentSlide - 1 + carouselSlides.length) % carouselSlides.length);
+    startCarousel();
+  });
+}
+
+if (nextBtn) {
+  nextBtn.addEventListener("click", function () {
+    clearInterval(carouselInterval);
+    nextSlide();
+    startCarousel();
+  });
+}
+
+if (carouselSlides.length) startCarousel();
+
+
+
+/**
  * navbar toggle
  */
 
