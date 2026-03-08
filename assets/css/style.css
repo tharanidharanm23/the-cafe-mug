@@ -1625,6 +1625,7 @@ body.active { overflow: hidden; }
   display: flex;
   gap: 12px;
   margin-block-start: 20px;
+  justify-content: center;
 }
 
 .contact-social-btn {
@@ -1635,15 +1636,40 @@ body.active { overflow: hidden; }
   height: 44px;
   border-radius: 50%;
   border: 2px solid var(--cultured);
-  color: var(--sonic-silver);
   font-size: 2rem;
   text-decoration: none;
   transition: all var(--transition-1);
 }
 
-.contact-social-btn:hover {
-  border-color: var(--deep-saffron);
-  color: var(--deep-saffron);
+/* Facebook — blue */
+.contact-social-btn[aria-label="Facebook"] {
+  color: #1877f2;
+  border-color: #1877f2;
+}
+.contact-social-btn[aria-label="Facebook"]:hover {
+  background: #1877f2;
+  color: var(--white);
+}
+
+/* Twitter/X — black */
+.contact-social-btn[aria-label="Twitter"] {
+  color: #000;
+  border-color: #000;
+}
+.contact-social-btn[aria-label="Twitter"]:hover {
+  background: #000;
+  color: var(--white);
+}
+
+/* Instagram — gradient via outline+text trick */
+.contact-social-btn[aria-label="Instagram"] {
+  color: #e1306c;
+  border-color: #e1306c;
+}
+.contact-social-btn[aria-label="Instagram"]:hover {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+  color: var(--white);
+  border-color: transparent;
 }
 
 
