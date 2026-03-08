@@ -473,7 +473,6 @@ const dishModalName    = document.getElementById('dishModalName');
 const dishModalDesc    = document.getElementById('dishModalDesc');
 const dishModalPrice   = document.getElementById('dishModalPrice');
 const dishModalSave    = document.getElementById('dishModalSave');
-const dishModalSaveIcon = document.getElementById('dishModalSaveIcon');
 const dishModalSaveText = document.getElementById('dishModalSaveText');
 
 const categoryImageMap = {
@@ -525,10 +524,9 @@ function closeDishModal() {
 }
 
 function updateDishModalSaveBtn() {
-  const saved = myList.includes(currentDishName);
-  dishModalSave.classList.toggle('saved', saved);
-  dishModalSaveIcon.setAttribute('name', saved ? 'bookmark' : 'bookmark-outline');
-  dishModalSaveText.textContent = saved ? 'Saved to My List' : 'Save to My List';
+  var inList = listIncludes(currentDishName);
+  dishModalSave.classList.toggle('in-list', inList);
+  dishModalSaveText.textContent = inList ? 'Add More +' : 'Add to My List';
 }
 
 // Click dish name
@@ -547,35 +545,26 @@ document.addEventListener('click', function (e) {
   openDishModal(name, desc, price, category);
 });
 
-// Modal save button
+// Modal add button (always adds — never removes)
 dishModalSave.addEventListener('click', function () {
   if (!currentDishName) return;
-  if (myList.includes(currentDishName)) {
-    myList = myList.filter(function (n) { return n !== currentDishName; });
-    // un-highlight the row's add button too
-    document.querySelectorAll('.add-to-list-btn').forEach(function (b) {
-      const row = b.closest('.menu-item-row');
-      if (row && row.dataset.name === currentDishName) {
-        b.classList.remove('added');
-        b.setAttribute('aria-label', 'Add to my list');
-        b.innerHTML = '<ion-icon name="bookmark-outline"></ion-icon>';
-      }
-    });
-  } else {
-    myList.push(currentDishName);
-    document.querySelectorAll('.add-to-list-btn').forEach(function (b) {
-      const row = b.closest('.menu-item-row');
-      if (row && row.dataset.name === currentDishName) {
-        b.classList.add('added');
-        b.setAttribute('aria-label', 'Remove from my list');
-        b.innerHTML = '<ion-icon name="bookmark"></ion-icon>';
-      }
-    });
-  }
-  saveList();
-  updateBadge();
-  updateDishModalSaveBtn();
-  if (myListPanel.classList.contains('active')) renderList();
+  openCountPicker(currentDishName, dishModalPrice.textContent, function (selections) {
+    myList = myList.filter(function (i) { return i.name !== currentDishName; });
+    selections.forEach(function (s) { listAdd(currentDishName, s.count, s.price, s.label); });
+    if (listIncludes(currentDishName)) {
+      document.querySelectorAll('.add-to-list-btn').forEach(function (b) {
+        const row = b.closest('.menu-item-row');
+        if (row && row.dataset.name === currentDishName) {
+          b.classList.add('added');
+          b.setAttribute('aria-label', 'Added to my list');
+        }
+      });
+    } else {
+      unHighlightItem(currentDishName);
+    }
+    saveList(); updateBadge(); updateDishModalSaveBtn();
+    if (myListPanel.classList.contains('active')) renderList();
+  });
 });
 
 dishModalClose.addEventListener('click', closeDishModal);
@@ -598,6 +587,24 @@ var comboModalBadge   = document.getElementById('comboModalBadge');
 var comboModalName    = document.getElementById('comboModalName');
 var comboModalItems   = document.getElementById('comboModalItems');
 var comboModalPrice   = document.getElementById('comboModalPrice');
+var comboModalSave    = document.getElementById('comboModalSave');
+var comboModalSaveText = document.getElementById('comboModalSaveText');
+var currentComboName  = '';
+
+function updateComboSaveBtn() {
+  var inList = listIncludes(currentComboName);
+  comboModalSave.classList.toggle('in-list', inList);
+  comboModalSaveText.textContent = inList ? 'Add More +' : 'Add to My List';
+}
+
+function updateComboCardBtns() {
+  document.querySelectorAll('.combo-card-save-btn').forEach(function (btn) {
+    var name = btn.dataset.comboName || '';
+    var inList = listIncludes(name);
+    btn.classList.toggle('added', inList);
+    btn.setAttribute('aria-label', inList ? 'Added to my list' : 'Add to my list');
+  });
+}
 
 var comboImageMap = {
   'starter combo':  './assets/images/promo-4-burger.png',
@@ -628,6 +635,9 @@ function openComboModal(card) {
     comboModalItems.appendChild(el);
   });
 
+  currentComboName = nameText;
+  updateComboSaveBtn();
+
   comboModal.setAttribute('aria-hidden', 'false');
   comboModal.classList.add('active');
   comboModalOverlay.classList.add('active');
@@ -651,6 +661,35 @@ document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape' && comboModal.classList.contains('active')) closeComboModal();
 });
 
+comboModalSave.addEventListener('click', function () {
+  if (!currentComboName) return;
+  openCountPicker(currentComboName, comboModalPrice.textContent, function (selections) {
+    myList = myList.filter(function (i) { return i.name !== currentComboName; });
+    selections.forEach(function (s) { listAdd(currentComboName, s.count, s.price, s.label); });
+    saveList(); updateBadge(); updateComboSaveBtn(); updateComboCardBtns();
+    if (myListPanel.classList.contains('active')) renderList();
+  });
+});
+
+// Combo card add button (always adds)
+document.addEventListener('click', function (e) {
+  var btn = e.target.closest('.combo-card-save-btn');
+  if (!btn) return;
+  e.stopPropagation();
+  var name = btn.dataset.comboName || '';
+  if (!name) return;
+  var card = btn.closest('.combo-card');
+  var cardPriceEl = card ? card.querySelector('.combo-price') : null;
+  var cardPrice = cardPriceEl ? cardPriceEl.textContent.trim() : '';
+  openCountPicker(name, cardPrice, function (selections) {
+    myList = myList.filter(function (i) { return i.name !== name; });
+    selections.forEach(function (s) { listAdd(name, s.count, s.price, s.label); });
+    saveList(); updateBadge(); updateComboCardBtns();
+    if (comboModal.classList.contains('active') && currentComboName === name) updateComboSaveBtn();
+    if (myListPanel.classList.contains('active')) renderList();
+  });
+});
+
 
 /**
  * My List — Add to list, panel open/close, remove, clear
@@ -664,19 +703,186 @@ const myListItemsEl = document.getElementById('myListItems');
 const myListEmpty   = document.getElementById('myListEmpty');
 const myListBadge   = document.getElementById('myListBadge');
 const myListClearBtn = document.getElementById('myListClearBtn');
+const myListTotalBtn = document.getElementById('myListTotalBtn');
+var showPriceMode = false;
 
-// In-memory list (persisted in sessionStorage so it survives page refresh within the session)
+// In-memory list [{name, count}] — persisted in sessionStorage
 let myList = (function () {
-  try { return JSON.parse(sessionStorage.getItem('cafeMyList') || '[]'); } catch(e) { return []; }
+  try {
+    var raw = JSON.parse(sessionStorage.getItem('cafeMyList') || '[]');
+    return raw.map(function (i) { return typeof i === 'string' ? { name: i, count: 1, price: '', label: '' } : Object.assign({ price: '', label: '' }, i); });
+  } catch(e) { return []; }
 })();
+
+// List helpers
+function listFindVariant(name, price) { return myList.find(function (i) { return i.name === name && i.price === price; }); }
+function listFind(name)     { return myList.find(function (i) { return i.name === name; }); }
+function listIncludes(name) { return myList.some(function (i) { return i.name === name; }); }
+function listRemove(name)   { myList = myList.filter(function (i) { return i.name !== name; }); }
+function listRemoveVariant(name, price) { myList = myList.filter(function (i) { return !(i.name === name && i.price === price); }); }
+function listAdd(name, count, price, label) {
+  price = price != null ? String(price).trim() : '';
+  label = label != null ? String(label) : '';
+  var ex = listFindVariant(name, price);
+  if (ex) { ex.count += count; ex.label = ex.label || label; } else { myList.push({ name: name, count: count, price: price, label: label }); }
+}
+
+// Count picker
+var countPickerOverlay, countPickerModal, countPickerItemName, countPickerLabel,
+    countPickerVariants, countPickerVal, countPickerInc, countPickerDec,
+    countPickerRow, countPickerConfirm, countPickerCancel;
+var pendingCountCallback = null;
+var countPickerSelectedPrice = '';
+
+var SIZE_LABELS = [[], [], ['Regular', 'Large'], ['Small', 'Medium', 'Large'], ['Small', 'Medium', 'Large', 'XL']];
+
+function parsePriceOptions(priceStr) {
+  var parts = (priceStr || '').split('/').map(function (p) {
+    return p.replace(/[₹,\s]/g, '');
+  }).filter(function (p) { return /^\d+$/.test(p); });
+  return parts.map(function (p, i) {
+    var labels = SIZE_LABELS[parts.length] || [];
+    return { label: labels[i] || (parts.length > 1 ? 'Option ' + (i + 1) : ''), price: '₹' + p };
+  });
+}
+
+function openCountPicker(itemName, priceStr, onConfirm) {
+  if (!countPickerModal) {
+    countPickerOverlay  = document.getElementById('countPickerOverlay');
+    countPickerModal    = document.getElementById('countPickerModal');
+    countPickerItemName = document.getElementById('countPickerItemName');
+    countPickerLabel    = document.getElementById('countPickerLabel');
+    countPickerVariants = document.getElementById('countPickerVariants');
+    countPickerVal      = document.getElementById('countPickerVal');
+    countPickerInc      = document.getElementById('countPickerInc');
+    countPickerDec      = document.getElementById('countPickerDec');
+    countPickerRow      = document.getElementById('countPickerRow');
+    countPickerConfirm  = document.getElementById('countPickerConfirm');
+    countPickerCancel   = document.getElementById('countPickerCancel');
+    countPickerInc.addEventListener('click', function () {
+      var v = parseInt(countPickerVal.textContent, 10) || 1;
+      countPickerVal.textContent = v + 1;
+    });
+    countPickerDec.addEventListener('click', function () {
+      var v = parseInt(countPickerVal.textContent, 10) || 1;
+      if (v > 1) countPickerVal.textContent = v - 1;
+    });
+    countPickerConfirm.addEventListener('click', function () {
+      var cpvRows = countPickerVariants.querySelectorAll('.cpv-row');
+      var selections = [];
+      if (cpvRows.length > 0) {
+        cpvRows.forEach(function (row) {
+          var count = parseInt(row.querySelector('.cpv-row-val').textContent, 10) || 0;
+          if (count > 0) selections.push({ count: count, price: row.dataset.variantPrice, label: row.dataset.variantLabel });
+        });
+      } else {
+        var count = parseInt(countPickerVal.textContent, 10) || 1;
+        selections.push({ count: count, price: countPickerSelectedPrice, label: '' });
+      }
+      var cb = pendingCountCallback;
+      pendingCountCallback = null;
+      closeCountPicker();
+      if (cb) cb(selections);
+    });
+    countPickerCancel.addEventListener('click', function () {
+      pendingCountCallback = null;
+      closeCountPicker();
+    });
+    countPickerOverlay.addEventListener('click', function () {
+      pendingCountCallback = null;
+      closeCountPicker();
+    });
+  }
+
+  var options = parsePriceOptions(priceStr);
+  countPickerItemName.textContent = itemName;
+  pendingCountCallback = onConfirm;
+
+  if (options.length > 1) {
+    countPickerVariants.innerHTML = '';
+    countPickerVariants.classList.add('cpv-multi');
+    options.forEach(function (opt) {
+      var existing = listFindVariant(itemName, opt.price);
+      var initCount = existing ? existing.count : 0;
+      var rowEl = document.createElement('div');
+      rowEl.className = 'cpv-row';
+      rowEl.dataset.variantPrice = opt.price;
+      rowEl.dataset.variantLabel = opt.label;
+      var labelEl = document.createElement('span');
+      labelEl.className = 'cpv-row-label';
+      labelEl.textContent = opt.label + ' · ' + opt.price;
+      var stepperEl = document.createElement('div');
+      stepperEl.className = 'cpv-row-stepper';
+      var decBtn = document.createElement('button');
+      decBtn.type = 'button';
+      decBtn.className = 'count-picker-adj cpv-dec';
+      decBtn.setAttribute('aria-label', 'Decrease ' + opt.label);
+      decBtn.textContent = '−';
+      var valEl = document.createElement('span');
+      valEl.className = 'cpv-row-val';
+      valEl.textContent = String(initCount);
+      var incBtn = document.createElement('button');
+      incBtn.type = 'button';
+      incBtn.className = 'count-picker-adj cpv-inc';
+      incBtn.setAttribute('aria-label', 'Increase ' + opt.label);
+      incBtn.textContent = '+';
+      decBtn.addEventListener('click', function () {
+        var v = parseInt(valEl.textContent, 10) || 0;
+        if (v > 0) valEl.textContent = String(v - 1);
+      });
+      incBtn.addEventListener('click', function () {
+        var v = parseInt(valEl.textContent, 10) || 0;
+        valEl.textContent = String(v + 1);
+      });
+      stepperEl.append(decBtn, valEl, incBtn);
+      rowEl.append(labelEl, stepperEl);
+      countPickerVariants.appendChild(rowEl);
+    });
+    countPickerVariants.style.display = '';
+    countPickerRow.style.display = 'none';
+    countPickerLabel.textContent = 'Choose size & quantity';
+  } else {
+    var existing = listFindVariant(itemName, options.length === 1 ? options[0].price : (priceStr || ''));
+    countPickerSelectedPrice = options.length === 1 ? options[0].price : (priceStr || '');
+    countPickerVal.textContent = String(existing ? Math.max(1, existing.count) : 1);
+    countPickerVariants.innerHTML = '';
+    countPickerVariants.classList.remove('cpv-multi');
+    countPickerVariants.style.display = 'none';
+    countPickerRow.style.display = '';
+    countPickerLabel.textContent = 'How many would you like?';
+  }
+
+  countPickerModal.classList.add('active');
+  countPickerOverlay.classList.add('active');
+  countPickerModal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCountPicker() {
+  if (!countPickerModal) return;
+  countPickerModal.classList.remove('active');
+  countPickerOverlay.classList.remove('active');
+  countPickerModal.setAttribute('aria-hidden', 'true');
+  var anyModal = (dishModal && dishModal.classList.contains('active')) ||
+                 (comboModal && comboModal.classList.contains('active'));
+  if (!anyModal) document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape' && countPickerModal && countPickerModal.classList.contains('active')) {
+    pendingCountCallback = null;
+    closeCountPicker();
+  }
+});
 
 function saveList() {
   try { sessionStorage.setItem('cafeMyList', JSON.stringify(myList)); } catch(e) {}
 }
 
 function updateBadge() {
-  if (myList.length > 0) {
-    myListBadge.textContent = myList.length;
+  var total = myList.reduce(function (s, i) { return s + i.count; }, 0);
+  if (total > 0) {
+    myListBadge.textContent = total;
     myListBadge.style.display = '';
   } else {
     myListBadge.style.display = 'none';
@@ -685,26 +891,91 @@ function updateBadge() {
 
 function renderList() {
   myListItemsEl.innerHTML = '';
+  var oldBar = myListPanel.querySelector('.my-list-total-bar');
+  if (oldBar) oldBar.remove();
 
   if (myList.length === 0) {
     myListEmpty.style.display = '';
     myListClearBtn.style.display = 'none';
+    myListTotalBtn.style.display = 'none';
+    showPriceMode = false;
+    myListTotalBtn.textContent = 'Show Total';
+    myListTotalBtn.classList.remove('active');
     return;
   }
 
   myListEmpty.style.display = 'none';
   myListClearBtn.style.display = '';
+  myListTotalBtn.style.display = '';
 
-  myList.forEach(function (name) {
-    const li = document.createElement('li');
-    li.className = 'my-list-item';
-    li.innerHTML =
-      '<span class="my-list-item-name">' + name + '</span>' +
-      '<button class="my-list-item-remove" aria-label="Remove ' + name + '" data-remove="' + name + '">' +
-        '<ion-icon name="trash-outline"></ion-icon>' +
-      '</button>';
-    myListItemsEl.appendChild(li);
+  // Group variants by item name, preserving insertion order
+  var groupOrder = [];
+  var groups = {};
+  myList.forEach(function (item) {
+    if (!groups[item.name]) { groups[item.name] = []; groupOrder.push(item.name); }
+    groups[item.name].push(item);
   });
+
+  var grandTotal = 0;
+
+  groupOrder.forEach(function (name) {
+    var variants = groups[name];
+    var isGroup  = variants.length > 1;
+
+    if (isGroup) {
+      var header = document.createElement('li');
+      header.className = 'my-list-group-header';
+      header.innerHTML = '<span class="my-list-group-name">' + name + '</span>';
+      myListItemsEl.appendChild(header);
+    }
+
+    variants.forEach(function (item) {
+      var fp = getFirstPrice(item.price);
+      var rowTotal = fp * item.count;
+      grandTotal += rowTotal;
+
+      var nameHtml;
+      if (isGroup) {
+        var subLabel = item.label || item.price || 'Regular';
+        nameHtml = showPriceMode && fp > 0
+          ? '<div class="my-list-item-info-col"><span class="my-list-subitem-label">' + subLabel + '</span><span class="my-list-item-price">₹' + fp + ' × ' + item.count + ' = ₹' + rowTotal + '</span></div>'
+          : '<span class="my-list-subitem-label">' + subLabel + '</span>';
+      } else {
+        if (item.label) {
+          nameHtml = showPriceMode && fp > 0
+            ? '<div class="my-list-item-info-col"><span class="my-list-item-name">' + item.name + '</span><span class="my-list-item-price">' + item.label + ' · ₹' + fp + ' × ' + item.count + ' = ₹' + rowTotal + '</span></div>'
+            : '<span class="my-list-item-name">' + item.name + ' <span class="my-list-item-size-tag">' + item.label + '</span></span>';
+        } else {
+          nameHtml = showPriceMode && fp > 0
+            ? '<div class="my-list-item-info-col"><span class="my-list-item-name">' + item.name + '</span><span class="my-list-item-price">₹' + fp + ' × ' + item.count + ' = ₹' + rowTotal + '</span></div>'
+            : '<span class="my-list-item-name">' + item.name + '</span>';
+        }
+      }
+
+      var safeN = item.name.replace(/"/g, '&quot;');
+      var safeP = item.price.replace(/"/g, '&quot;');
+      var li = document.createElement('li');
+      li.className = 'my-list-item' + (isGroup ? ' my-list-subitem' : '');
+      li.innerHTML =
+        nameHtml +
+        '<div class="my-list-item-qty">' +
+          '<button class="qty-adj-btn" data-adj="dec" data-vname="' + safeN + '" data-vprice="' + safeP + '">−</button>' +
+          '<span class="qty-adj-val">' + item.count + '</span>' +
+          '<button class="qty-adj-btn" data-adj="inc" data-vname="' + safeN + '" data-vprice="' + safeP + '">+</button>' +
+        '</div>' +
+        '<button class="my-list-item-remove" aria-label="Remove" data-vname="' + safeN + '" data-vprice="' + safeP + '">' +
+          '<ion-icon name="trash-outline"></ion-icon>' +
+        '</button>';
+      myListItemsEl.appendChild(li);
+    });
+  });
+
+  if (showPriceMode) {
+    var bar = document.createElement('div');
+    bar.className = 'my-list-total-bar';
+    bar.innerHTML = '<span>Estimated Total</span><strong>₹' + grandTotal + '</strong>';
+    myListItemsEl.insertAdjacentElement('afterend', bar);
+  }
 }
 
 function openPanel() {
@@ -724,40 +995,74 @@ myListFab.addEventListener('click', openPanel);
 myListCloseBtn.addEventListener('click', closePanel);
 myListOverlay.addEventListener('click', closePanel);
 
-// Remove individual item
-myListItemsEl.addEventListener('click', function (e) {
-  const btn = e.target.closest('[data-remove]');
-  if (!btn) return;
-  const name = btn.dataset.remove;
-  myList = myList.filter(function (n) { return n !== name; });
-  saveList();
-  updateBadge();
-  // Un-highlight add button in menu
+// Helper to un-highlight buttons when an item is fully removed
+function unHighlightItem(name) {
   document.querySelectorAll('.add-to-list-btn').forEach(function (b) {
     const row = b.closest('.menu-item-row');
     if (row && row.dataset.name === name) {
       b.classList.remove('added');
       b.setAttribute('aria-label', 'Add to my list');
-      b.innerHTML = '<ion-icon name="bookmark-outline"></ion-icon>';
     }
   });
-  renderList();
+  updateComboCardBtns();
+  if (dishModal && dishModal.classList.contains('active') && currentDishName === name) updateDishModalSaveBtn();
+  if (comboModal && comboModal.classList.contains('active') && currentComboName === name) updateComboSaveBtn();
+}
+
+// Qty inc/dec and remove in My List panel (per variant)
+myListItemsEl.addEventListener('click', function (e) {
+  var adjBtn = e.target.closest('[data-adj]');
+  if (adjBtn) {
+    var vname = adjBtn.dataset.vname;
+    var vprice = adjBtn.dataset.vprice;
+    var item = listFindVariant(vname, vprice);
+    if (!item) return;
+    if (adjBtn.dataset.adj === 'inc') {
+      item.count++;
+    } else {
+      item.count--;
+      if (item.count <= 0) {
+        listRemoveVariant(vname, vprice);
+        if (!listIncludes(vname)) unHighlightItem(vname);
+      }
+    }
+    saveList(); updateBadge(); renderList();
+    return;
+  }
+  var removeBtn = e.target.closest('[data-vname][data-vprice].my-list-item-remove');
+  if (!removeBtn) return;
+  var rname  = removeBtn.dataset.vname;
+  var rprice = removeBtn.dataset.vprice;
+  listRemoveVariant(rname, rprice);
+  if (!listIncludes(rname)) unHighlightItem(rname);
+  saveList(); updateBadge(); renderList();
 });
 
 // Clear all
 myListClearBtn.addEventListener('click', function () {
   myList = [];
+  showPriceMode = false;
+  myListTotalBtn.textContent = 'Show Total';
+  myListTotalBtn.classList.remove('active');
   saveList();
   updateBadge();
   document.querySelectorAll('.add-to-list-btn.added').forEach(function (b) {
     b.classList.remove('added');
     b.setAttribute('aria-label', 'Add to my list');
-    b.innerHTML = '<ion-icon name="bookmark-outline"></ion-icon>';
   });
+  updateComboCardBtns();
   renderList();
 });
 
-// Add to list via bookmark buttons
+// Show Total toggle
+myListTotalBtn.addEventListener('click', function () {
+  showPriceMode = !showPriceMode;
+  myListTotalBtn.textContent = showPriceMode ? 'Hide Total' : 'Show Total';
+  myListTotalBtn.classList.toggle('active', showPriceMode);
+  renderList();
+});
+
+// Add to list via bookmark buttons (always adds — never removes)
 document.addEventListener('click', function (e) {
   const btn = e.target.closest('.add-to-list-btn');
   if (!btn) return;
@@ -765,23 +1070,22 @@ document.addEventListener('click', function (e) {
   if (!row) return;
   const name = row.dataset.name || '';
   if (!name) return;
+  const rowPriceEl = row.querySelector('.menu-item-price');
+  const rowPrice = rowPriceEl ? rowPriceEl.textContent.trim() : '';
 
-  if (myList.includes(name)) {
-    // Toggle off — remove from list
-    myList = myList.filter(function (n) { return n !== name; });
-    btn.classList.remove('added');
-    btn.setAttribute('aria-label', 'Add to my list');
-    btn.innerHTML = '<ion-icon name="bookmark-outline"></ion-icon>';
-  } else {
-    // Add to list
-    myList.push(name);
-    btn.classList.add('added');
-    btn.setAttribute('aria-label', 'Remove from my list');
-    btn.innerHTML = '<ion-icon name="bookmark"></ion-icon>';
-  }
-  saveList();
-  updateBadge();
-  if (myListPanel.classList.contains('active')) renderList();
+  openCountPicker(name, rowPrice, function (selections) {
+    myList = myList.filter(function (i) { return i.name !== name; });
+    selections.forEach(function (s) { listAdd(name, s.count, s.price, s.label); });
+    if (listIncludes(name)) {
+      btn.classList.add('added');
+      btn.setAttribute('aria-label', 'Added to my list');
+    } else {
+      btn.classList.remove('added');
+      btn.setAttribute('aria-label', 'Add to my list');
+    }
+    saveList(); updateBadge();
+    if (myListPanel.classList.contains('active')) renderList();
+  });
 });
 
 // Restore button states on page load
@@ -789,12 +1093,12 @@ document.addEventListener('click', function (e) {
   document.querySelectorAll('.add-to-list-btn').forEach(function (btn) {
     const row = btn.closest('.menu-item-row');
     if (!row) return;
-    if (myList.includes(row.dataset.name)) {
+    if (listIncludes(row.dataset.name)) {
       btn.classList.add('added');
-      btn.setAttribute('aria-label', 'Remove from my list');
-      btn.innerHTML = '<ion-icon name="bookmark"></ion-icon>';
+      btn.setAttribute('aria-label', 'Added to my list');
     }
   });
+  updateComboCardBtns();
   updateBadge();
 })();
 

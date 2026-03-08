@@ -2353,22 +2353,24 @@ textarea.input-field {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  border: 2px solid var(--cultured);
+  border: 2px solid var(--deep-saffron);
   background: transparent;
-  color: var(--sonic-silver);
-  font-size: 1.8rem;
+  color: var(--deep-saffron);
+  font-size: 2rem;
+  font-weight: var(--fw-700);
+  font-family: var(--ff-rubik);
+  line-height: 1;
   flex-shrink: 0;
   cursor: pointer;
-  transition: background var(--transition-1), color var(--transition-1), border-color var(--transition-1);
+  transition: background var(--transition-1), color var(--transition-1);
 }
 
 .add-to-list-btn:hover {
-  border-color: var(--deep-saffron);
-  color: var(--deep-saffron);
-  background: hsla(32, 100%, 59%, 0.1);
+  background: var(--deep-saffron);
+  color: var(--white);
 }
 
 .add-to-list-btn.added {
@@ -2406,22 +2408,24 @@ textarea.input-field {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  border: 2px solid var(--cultured);
+  border: 2px solid var(--deep-saffron);
   background: transparent;
-  color: var(--sonic-silver);
+  color: var(--deep-saffron);
   font-size: 1.8rem;
+  font-weight: var(--fw-700);
+  font-family: var(--ff-rubik);
+  line-height: 1;
   flex-shrink: 0;
   cursor: pointer;
-  transition: background var(--transition-1), color var(--transition-1), border-color var(--transition-1);
+  transition: background var(--transition-1), color var(--transition-1);
 }
 
 .add-to-list-btn:hover {
-  border-color: var(--deep-saffron);
-  color: var(--deep-saffron);
-  background: hsla(32, 100%, 59%, 0.1);
+  background: var(--deep-saffron);
+  color: var(--white);
 }
 
 .add-to-list-btn.added {
@@ -2891,10 +2895,202 @@ textarea.input-field {
   --height: 48px;
 }
 
-.dish-modal-save.saved {
-  --bg-color: var(--rich-black-fogra-29);
-  --border-color: var(--rich-black-fogra-29);
+.dish-modal-save.in-list {
+  --bg-color: var(--champagne-pink);
+  --border-color: var(--deep-saffron);
+  color: var(--deep-saffron);
 }
+
+/*-----------------------------------*\
+  #COUNT PICKER
+\*-----------------------------------*/
+
+.count-picker-overlay {
+  position: fixed;
+  inset: 0;
+  background: hsla(0, 0%, 0%, 0);
+  z-index: 1060;
+  pointer-events: none;
+  transition: background 0.22s ease;
+}
+
+.count-picker-overlay.active {
+  background: hsla(0, 0%, 0%, 0.5);
+  pointer-events: auto;
+}
+
+.count-picker-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -44%) scale(0.92);
+  width: min(320px, calc(100vw - 32px));
+  background: var(--white);
+  border-radius: 20px;
+  padding: 28px 24px 24px;
+  box-shadow: 0 20px 60px hsla(0, 0%, 0%, 0.22);
+  z-index: 1061;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s ease, transform 0.22s ease;
+  text-align: center;
+}
+
+.count-picker-modal.active {
+  opacity: 1;
+  pointer-events: all;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.count-picker-item-name {
+  font-family: var(--ff-rubik);
+  font-size: var(--fs-3);
+  font-weight: var(--fw-700);
+  color: var(--rich-black-fogra-29);
+  margin-block-end: 4px;
+  line-height: 1.3;
+}
+
+.count-picker-label {
+  font-size: var(--fs-5);
+  color: var(--sonic-silver);
+  margin-block-end: 12px;
+}
+
+/* Size / variant pills */
+.count-picker-variants {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-block-end: 16px;
+}
+
+.count-picker-variant-btn {
+  padding: 7px 18px;
+  border: 2px solid var(--cultured);
+  border-radius: 50px;
+  background: var(--white);
+  font-family: var(--ff-rubik);
+  font-size: var(--fs-5);
+  font-weight: var(--fw-600);
+  color: var(--sonic-silver);
+  cursor: pointer;
+  transition: all var(--transition-1);
+  white-space: nowrap;
+}
+
+.count-picker-variant-btn:hover {
+  border-color: var(--deep-saffron);
+  color: var(--deep-saffron);
+}
+
+.count-picker-variant-btn.active {
+  background: var(--deep-saffron);
+  border-color: var(--deep-saffron);
+  color: var(--white);
+}
+
+/* Multi-variant rows (each size gets its own stepper) */
+.count-picker-variants.cpv-multi {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  text-align: left;
+}
+
+.cpv-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--cultured);
+}
+
+.cpv-row:last-child { border-bottom: none; }
+
+.cpv-row-label {
+  font-family: var(--ff-rubik);
+  font-size: var(--fs-5);
+  font-weight: var(--fw-600);
+  color: var(--rich-black-fogra-29);
+}
+
+.cpv-row-stepper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.cpv-row-val {
+  font-family: var(--ff-rubik);
+  font-size: var(--fs-4);
+  font-weight: var(--fw-700);
+  color: var(--rich-black-fogra-29);
+  min-width: 22px;
+  text-align: center;
+}
+
+.count-picker-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-block-end: 24px;
+}
+
+.count-picker-adj {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--cultured);
+  background: var(--white);
+  font-size: 2.2rem;
+  font-weight: var(--fw-600);
+  color: var(--rich-black-fogra-29);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-1);
+  line-height: 1;
+}
+
+.count-picker-adj:hover {
+  background: var(--deep-saffron);
+  border-color: var(--deep-saffron);
+  color: var(--white);
+}
+
+.count-picker-val {
+  font-family: var(--ff-rubik);
+  font-size: 3.2rem;
+  font-weight: var(--fw-700);
+  color: var(--rich-black-fogra-29);
+  min-width: 40px;
+  display: inline-block;
+}
+
+.count-picker-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.count-picker-confirm { width: 100%; --height: 46px; }
+
+.count-picker-cancel {
+  font-family: var(--ff-roboto);
+  font-size: var(--fs-4);
+  color: var(--sonic-silver);
+  cursor: pointer;
+  padding-block: 4px;
+  transition: color var(--transition-1);
+}
+
+.count-picker-cancel:hover { color: var(--cinnabar); }
+
 
 /*-----------------------------------*\
   #COMBO IMAGE MODAL
@@ -3028,8 +3224,52 @@ textarea.input-field {
   margin-block-start: 4px;
 }
 
+.combo-modal-save {
+  margin-block-start: 8px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  --height: 48px;
+}
+
+.combo-modal-save.in-list {
+  --bg-color: var(--champagne-pink);
+  --border-color: var(--deep-saffron);
+  color: var(--deep-saffron);
+}
+
 /* Make combo cards clickable */
 .combo-card { cursor: pointer; }
+
+.combo-card-save-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  height: 26px;
+  padding-inline: 10px;
+  border-radius: 50px;
+  background: var(--white);
+  border: 1.5px solid var(--deep-saffron);
+  color: var(--deep-saffron);
+  font-family: var(--ff-rubik);
+  font-size: 1.2rem;
+  font-weight: var(--fw-700);
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all var(--transition-1);
+  z-index: 1;
+  white-space: nowrap;
+}
+
+.combo-card-save-btn:hover,
+.combo-card-save-btn.added {
+  background: var(--deep-saffron);
+  border-color: var(--deep-saffron);
+  color: var(--white);
+}
 
 
 /*-----------------------------------*\
@@ -3179,6 +3419,19 @@ textarea.input-field {
   color: var(--rich-black-fogra-29);
 }
 
+.my-list-item-size-tag {
+  display: inline-block;
+  font-family: var(--ff-roboto);
+  font-size: 1.1rem;
+  font-weight: var(--fw-600);
+  color: var(--deep-saffron);
+  background: hsla(32, 100%, 59%, 0.1);
+  border-radius: 4px;
+  padding: 1px 6px;
+  margin-inline-start: 5px;
+  vertical-align: middle;
+}
+
 .my-list-item-remove {
   display: flex;
   align-items: center;
@@ -3198,6 +3451,73 @@ textarea.input-field {
   color: var(--cinnabar);
 }
 
+/* Group header (when same item has multiple sizes) */
+.my-list-group-header {
+  padding: 10px 20px 4px;
+  border-bottom: 1px solid var(--cultured);
+  background: var(--cultured);
+}
+
+.my-list-group-name {
+  font-family: var(--ff-rubik);
+  font-size: var(--fs-4);
+  font-weight: var(--fw-700);
+  color: var(--rich-black-fogra-29);
+}
+
+/* Sub-item row (indented variant within a group) */
+.my-list-subitem {
+  padding-inline-start: 32px;
+  background: var(--white);
+}
+
+.my-list-subitem-label {
+  flex: 1;
+  font-family: var(--ff-roboto);
+  font-size: var(--fs-5);
+  font-weight: var(--fw-500);
+  color: var(--sonic-silver);
+}
+
+.my-list-item-qty {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.qty-adj-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1.5px solid var(--cultured);
+  background: var(--white);
+  font-size: 1.6rem;
+  color: var(--sonic-silver);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-1);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.qty-adj-btn:hover {
+  background: var(--deep-saffron);
+  border-color: var(--deep-saffron);
+  color: var(--white);
+}
+
+.qty-adj-val {
+  font-family: var(--ff-rubik);
+  font-size: var(--fs-4);
+  font-weight: var(--fw-600);
+  color: var(--rich-black-fogra-29);
+  min-width: 20px;
+  text-align: center;
+}
+
 /* Empty state */
 .my-list-empty {
   text-align: center;
@@ -3214,16 +3534,94 @@ textarea.input-field {
 
 /* Clear All button */
 .my-list-clear-btn {
-  margin: 12px 20px 20px;
-  --bg-color: var(--cultured);
-  --color: var(--sonic-silver);
-  --border-color: transparent;
+  --bg-color: transparent;
+  --color: var(--cinnabar);
+  border: 2px solid var(--cinnabar) !important;
+  color: var(--cinnabar) !important;
   flex-shrink: 0;
 }
 
 .my-list-clear-btn:hover {
   --bg-color: var(--cinnabar);
   --color: var(--white);
+  background-color: var(--cinnabar) !important;
+  color: var(--white) !important;
+}
+
+/* Footer row for clear + total buttons */
+.my-list-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 20px 20px;
+  flex-shrink: 0;
+}
+
+.my-list-footer .my-list-clear-btn {
+  margin: 0;
+}
+
+/* Show Total button */
+.my-list-total-btn {
+  padding: 0 20px;
+  height: 45px;
+  border: 2px solid var(--deep-saffron);
+  border-radius: 50px;
+  background: transparent;
+  color: var(--deep-saffron);
+  font-family: var(--ff-rubik);
+  font-size: var(--fs-4);
+  font-weight: var(--fw-600);
+  cursor: pointer;
+  transition: all var(--transition-1);
+  flex-shrink: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.my-list-total-btn:hover,
+.my-list-total-btn.active {
+  background: var(--deep-saffron);
+  color: var(--white);
+}
+
+/* Per-item name + price column (price mode) */
+.my-list-item-info-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.my-list-item-info-col .my-list-item-name {
+  flex: unset;
+}
+
+.my-list-item-price {
+  font-size: 1.2rem;
+  color: var(--sonic-silver);
+  font-family: var(--ff-roboto);
+}
+
+/* Total bar at bottom of list */
+.my-list-total-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-top: 2px solid var(--deep-saffron);
+  background: hsla(32, 100%, 59%, 0.06);
+  font-family: var(--ff-rubik);
+  font-size: var(--fs-4);
+  color: var(--rich-black-fogra-29);
+  flex-shrink: 0;
+}
+
+.my-list-total-bar strong {
+  font-size: var(--fs-3);
+  font-weight: var(--fw-700);
+  color: var(--deep-saffron);
 }
 
 /* Mobile: FAB shrinks to icon only */
