@@ -121,29 +121,38 @@ for (let i = 0; i < searchBoxElems.length; i++) {
  * move cycle on scroll
  */
 
-const deliveryBoy = document.querySelector("[data-delivery-boy]");
+const deliveryBoy    = document.querySelector("[data-delivery-boy]");
+const deliveryBanner = deliveryBoy.closest('.delivery-banner');
 
-let deliveryBoyMove = -80;
-let lastScrollPos = 0;
+function updateDeliveryBoy() {
+  const rect  = deliveryBanner.getBoundingClientRect();
+  const vh    = window.innerHeight;
 
-window.addEventListener("scroll", function () {
+  // Not on screen at all — skip
+  if (rect.bottom < 0 || rect.top > vh) return;
 
-  let deliveryBoyTopPos = deliveryBoy.getBoundingClientRect().top;
+  // Wait until the full banner is inside the viewport (rect.bottom <= vh)
+  // The range over which animation plays: rect.top goes from (vh - rect.height) down to 0
+  const range = vh - rect.height;
 
-  if (deliveryBoyTopPos < 500 && deliveryBoyTopPos > -250) {
-    let activeScrollPos = window.scrollY;
-
-    if (lastScrollPos < activeScrollPos) {
-      deliveryBoyMove += 1;
-    } else {
-      deliveryBoyMove -= 1;
-    }
-
-    lastScrollPos = activeScrollPos;
-    deliveryBoy.style.transform = `translateX(${deliveryBoyMove}px)`;
+  if (range <= 0 || rect.top > range) {
+    // Banner not fully visible yet — hold at left
+    deliveryBoy.style.transform = 'translateX(-80px)';
+    return;
   }
 
-});
+  // progress = 0 when banner just became fully visible
+  // progress = 1 when banner top hits the viewport top
+  const progress  = Math.min(1, Math.max(0, (range - rect.top) / range));
+  const translateX = -80 + progress * 94;
+  deliveryBoy.style.transform = `translateX(${translateX}px)`;
+}
+
+window.addEventListener('scroll', function () {
+  requestAnimationFrame(updateDeliveryBoy);
+}, { passive: true });
+
+updateDeliveryBoy();
 
 
 
