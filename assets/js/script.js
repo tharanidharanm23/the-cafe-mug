@@ -241,8 +241,8 @@ document.querySelectorAll('.menu-items-grid').forEach(function (grid) {
   });
 });
 
-var currentFilter = 'all';
-var currentSort   = 'default';
+var currentSort      = 'default';
+var currentVegFilter = 'all';
 
 function getFirstPrice(text) {
   var m = (text || '').replace(/[₹,]/g, '').match(/\d+/);
@@ -251,28 +251,23 @@ function getFirstPrice(text) {
 
 function applyMenuControls() {
   accordionItems.forEach(function (item) {
-    var titleEl   = item.querySelector('.accordion-title');
-    var titleText = titleEl ? titleEl.textContent.toLowerCase() : '';
-    var show      = currentFilter === 'all' || titleText.includes(currentFilter);
-    item.style.display = show ? '' : 'none';
-    if (!show) return;
+    item.style.display = '';
 
     var grid = item.querySelector('.menu-items-grid');
     if (!grid) return;
+
+    var hideLabels = currentSort !== 'default' || currentVegFilter !== 'all';
+    grid.querySelectorAll('.menu-subcategory-label').forEach(function (lbl) {
+      lbl.style.display = hideLabels ? 'none' : '';
+    });
 
     if (currentSort === 'default') {
       var allChildren = Array.from(grid.children);
       allChildren.sort(function (a, b) {
         return (parseInt(a.dataset.origOrder, 10) || 0) - (parseInt(b.dataset.origOrder, 10) || 0);
       });
-      allChildren.forEach(function (child) {
-        child.style.display = '';
-        grid.appendChild(child);
-      });
+      allChildren.forEach(function (child) { grid.appendChild(child); });
     } else {
-      grid.querySelectorAll('.menu-subcategory-label').forEach(function (lbl) {
-        lbl.style.display = 'none';
-      });
       var rows = Array.from(grid.querySelectorAll('.menu-item-row'));
       rows.sort(function (a, b) {
         if (currentSort === 'az') return (a.dataset.name || '').localeCompare(b.dataset.name || '');
@@ -283,71 +278,68 @@ function applyMenuControls() {
       });
       rows.forEach(function (row) { grid.appendChild(row); });
     }
+
+    if (currentVegFilter !== 'all') {
+      var visibleCount = 0;
+      grid.querySelectorAll('.menu-item-row').forEach(function (row) {
+        var match = row.dataset.type === currentVegFilter;
+        row.style.display = match ? '' : 'none';
+        if (match) visibleCount++;
+      });
+      if (visibleCount === 0) item.style.display = 'none';
+    } else {
+      grid.querySelectorAll('.menu-item-row').forEach(function (row) { row.style.display = ''; });
+    }
   });
 }
 
-// Filter pill clicks
-var filterPills = document.querySelectorAll('.filter-pill');
-filterPills.forEach(function (pill) {
-  pill.addEventListener('click', function () {
-    currentFilter = this.dataset.filter;
-    filterPills.forEach(function (p) { p.classList.remove('active'); });
-    this.classList.add('active');
+// Custom sort dropdown
+var sortDropdown     = document.getElementById('sortDropdown');
+var sortDropdownBtn  = document.getElementById('sortDropdownBtn');
+var sortDropdownList = document.getElementById('sortDropdownList');
+var sortDropdownLabel = document.getElementById('sortDropdownLabel');
 
-    // Clear search when a specific filter is chosen
-    if (fullMenuSearch && fullMenuSearch.value) {
-      fullMenuSearch.value = '';
-      document.querySelectorAll('.menu-item-row').forEach(function (row) { row.style.display = ''; });
-      accordionHeaders.forEach(function (h) {
-        h.classList.remove('active');
-        h.setAttribute('aria-expanded', 'false');
-        h.nextElementSibling.classList.remove('active');
-      });
-      if (fullMenuNoResults) fullMenuNoResults.style.display = 'none';
-    }
+function closeSortDropdown() {
+  sortDropdownList.classList.remove('open');
+  sortDropdownBtn.setAttribute('aria-expanded', 'false');
+  sortDropdownBtn.classList.remove('open');
+}
 
-    applyMenuControls();
-
-    // Auto-open the matching accordion; close all when "All" is selected
-    if (currentFilter !== 'all') {
-      var firstVisible = null;
-      accordionItems.forEach(function (item) {
-        if (item.style.display === 'none') return;
-        var h    = item.querySelector('.accordion-header');
-        var body = item.querySelector('.accordion-body');
-        if (h && body) {
-          h.classList.add('active');
-          h.setAttribute('aria-expanded', 'true');
-          body.classList.add('active');
-          if (!firstVisible) firstVisible = item;
-        }
-      });
-      // Scroll the opened accordion to just below the cat bar / top
-      if (firstVisible) {
-        setTimeout(function () {
-          var barH = menuCatBar && menuCatBar.classList.contains('visible') ? menuCatBar.offsetHeight : 0;
-          var el = firstVisible, absTop = 0;
-          do { absTop += el.offsetTop; } while ((el = el.offsetParent));
-          window.scrollTo({ top: absTop - barH - 8, behavior: 'smooth' });
-        }, 480);
-      }
-    } else {
-      accordionHeaders.forEach(function (h) {
-        h.classList.remove('active');
-        h.setAttribute('aria-expanded', 'false');
-        h.nextElementSibling.classList.remove('active');
-      });
-    }
-  });
+sortDropdownBtn.addEventListener('click', function (e) {
+  e.stopPropagation();
+  var isOpen = sortDropdownList.classList.toggle('open');
+  sortDropdownBtn.setAttribute('aria-expanded', String(isOpen));
+  sortDropdownBtn.classList.toggle('open', isOpen);
 });
 
-// Sort button clicks
-var sortBtns = document.querySelectorAll('.sort-btn');
-sortBtns.forEach(function (btn) {
-  btn.addEventListener('click', function () {
-    currentSort = this.dataset.sort;
-    sortBtns.forEach(function (b) { b.classList.remove('active'); });
-    this.classList.add('active');
+sortDropdownList.addEventListener('click', function (e) {
+  var item = e.target.closest('.sort-dropdown-item');
+  if (!item) return;
+  currentSort = item.dataset.sort;
+  sortDropdownLabel.textContent = item.textContent;
+  sortDropdownList.querySelectorAll('.sort-dropdown-item').forEach(function (el) {
+    el.classList.toggle('active', el === item);
+  });
+  closeSortDropdown();
+  applyMenuControls();
+});
+
+document.addEventListener('click', function (e) {
+  if (!sortDropdown.contains(e.target)) closeSortDropdown();
+});
+
+// Diet (veg / non-veg) pills
+var dietPills = document.querySelectorAll('.diet-pill');
+dietPills.forEach(function (pill) {
+  pill.addEventListener('click', function () {
+    var diet = this.dataset.diet;
+    if (currentVegFilter === diet) {
+      currentVegFilter = 'all';
+      dietPills.forEach(function (p) { p.classList.remove('active'); });
+    } else {
+      currentVegFilter = diet;
+      dietPills.forEach(function (p) { p.classList.toggle('active', p.dataset.diet === diet); });
+    }
     applyMenuControls();
   });
 });
@@ -426,10 +418,10 @@ catBarPills.forEach(function (pill) {
     });
     if (!targetItem) return;
 
-    // Ensure it is visible (reset filter if needed)
+    // Ensure it is visible (reset veg filter if needed)
     if (targetItem.style.display === 'none') {
-      currentFilter = 'all';
-      filterPills.forEach(function (p) { p.classList.toggle('active', p.dataset.filter === 'all'); });
+      currentVegFilter = 'all';
+      document.querySelectorAll('.diet-pill').forEach(function (p) { p.classList.remove('active'); });
       applyMenuControls();
     }
 
@@ -652,7 +644,10 @@ function closeComboModal() {
 }
 
 document.querySelectorAll('.combo-card').forEach(function (card) {
-  card.addEventListener('click', function () { openComboModal(this); });
+  card.addEventListener('click', function (e) {
+    if (e.target.closest('.combo-card-save-btn')) return;
+    openComboModal(this);
+  });
 });
 
 comboModalClose.addEventListener('click', closeComboModal);
@@ -1122,67 +1117,3 @@ branchTabs.forEach(function (tab) {
 
 
 
-/**
- * Footer form tabs & WhatsApp send
- */
-
-const formTabs = document.querySelectorAll("[data-form-tab]");
-const bookForm = document.getElementById("bookTableForm");
-const contactForm = document.getElementById("contactUsForm");
-
-formTabs.forEach(function (tab) {
-  tab.addEventListener("click", function () {
-    formTabs.forEach(function (t) { t.classList.remove("active"); });
-    tab.classList.add("active");
-
-    if (tab.dataset.formTab === "book") {
-      bookForm.classList.add("active");
-      contactForm.classList.remove("active");
-    } else {
-      contactForm.classList.add("active");
-      bookForm.classList.remove("active");
-    }
-  });
-});
-
-bookForm.addEventListener("submit", function (e) {
-  e.preventDefault();
-  const f = new FormData(bookForm);
-  const name = f.get("full_name") || "";
-  const phone = f.get("phone") || "";
-  const email = f.get("email") || "";
-  const persons = f.get("total_person") || "";
-  const date = f.get("booking_date") || "";
-  const time = f.get("booking_time") || "";
-  const msg = f.get("message") || "";
-
-  let text = "📋 *Table Booking Request*\n\n";
-  text += "👤 *Name:* " + name + "\n";
-  text += "📞 *Phone:* " + phone + "\n";
-  if (email) text += "📧 *Email:* " + email + "\n";
-  if (persons) text += "👥 *Persons:* " + persons + "\n";
-  text += "📅 *Date:* " + date + "\n";
-  text += "🕐 *Time:* " + time + "\n";
-  if (msg) text += "💬 *Message:* " + msg + "\n";
-
-  window.open("https://wa.me/918438111014?text=" + encodeURIComponent(text), "_blank");
-  bookForm.reset();
-});
-
-contactForm.addEventListener("submit", function (e) {
-  e.preventDefault();
-  const f = new FormData(contactForm);
-  const name = f.get("full_name") || "";
-  const phone = f.get("phone") || "";
-  const email = f.get("email") || "";
-  const msg = f.get("message") || "";
-
-  let text = "📩 *Contact Us Message*\n\n";
-  text += "👤 *Name:* " + name + "\n";
-  text += "📞 *Phone:* " + phone + "\n";
-  if (email) text += "📧 *Email:* " + email + "\n";
-  text += "💬 *Message:* " + msg + "\n";
-
-  window.open("https://wa.me/918438111014?text=" + encodeURIComponent(text), "_blank");
-  contactForm.reset();
-});

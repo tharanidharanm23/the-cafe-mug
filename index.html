@@ -525,36 +525,28 @@
             <ion-icon name="search-outline" class="menu-search-icon"></ion-icon>
           </div>
 
-          <!-- Filter & Sort Controls -->
+          <!-- Sort & Diet Controls -->
           <div class="menu-controls-bar">
-            <div class="menu-filter-group">
-              <span class="menu-controls-label">Category</span>
-              <div class="menu-filter-pills" id="menuFilterPills">
-                <button class="filter-pill active" data-filter="all">All</button>
-                <button class="filter-pill" data-filter="pizza">🍕 Pizza</button>
-                <button class="filter-pill" data-filter="munchies">🍟 Munchies</button>
-                <button class="filter-pill" data-filter="sandwich">🥪 Sandwich</button>
-                <button class="filter-pill" data-filter="momos">🥟 Momos</button>
-                <button class="filter-pill" data-filter="burger">🍔 Burger</button>
-                <button class="filter-pill" data-filter="chicken">🍗 Chicken</button>
-                <button class="filter-pill" data-filter="brownie">🍫 Brownie</button>
-                <button class="filter-pill" data-filter="falooda">🧁 Falooda</button>
-                <button class="filter-pill" data-filter="ice cream">🍦 Ice Cream</button>
-                <button class="filter-pill" data-filter="coldies">☕ Coldies</button>
-                <button class="filter-pill" data-filter="juice">🍊 Fresh Juice</button>
-                <button class="filter-pill" data-filter="mojito">🍹 Mojito</button>
-                <button class="filter-pill" data-filter="milkshake">🥛 Milkshakes</button>
-                <button class="filter-pill" data-filter="add ons">➕ Add Ons</button>
+            <div class="menu-sort-row">
+              <div class="menu-sort-group">
+                <span class="menu-controls-label">Sort</span>
+                <div class="sort-dropdown" id="sortDropdown">
+                  <button class="sort-dropdown-btn" id="sortDropdownBtn" aria-haspopup="listbox" aria-expanded="false">
+                    <span id="sortDropdownLabel">Default</span>
+                    <ion-icon name="chevron-down-outline" class="sort-dropdown-icon"></ion-icon>
+                  </button>
+                  <ul class="sort-dropdown-list" id="sortDropdownList" role="listbox">
+                    <li class="sort-dropdown-item active" data-sort="default" role="option">Default</li>
+                    <li class="sort-dropdown-item" data-sort="az" role="option">A – Z</li>
+                    <li class="sort-dropdown-item" data-sort="za" role="option">Z – A</li>
+                    <li class="sort-dropdown-item" data-sort="price-asc" role="option">Price ↑</li>
+                    <li class="sort-dropdown-item" data-sort="price-desc" role="option">Price ↓</li>
+                  </ul>
+                </div>
               </div>
-            </div>
-            <div class="menu-sort-group">
-              <span class="menu-controls-label">Sort</span>
-              <div class="menu-sort-btns" id="menuSortBtns">
-                <button class="sort-btn active" data-sort="default">Default</button>
-                <button class="sort-btn" data-sort="az">A – Z</button>
-                <button class="sort-btn" data-sort="za">Z – A</button>
-                <button class="sort-btn" data-sort="price-asc">Price ↑</button>
-                <button class="sort-btn" data-sort="price-desc">Price ↓</button>
+              <div class="menu-diet-group">
+                <button class="diet-pill veg-pill" data-diet="veg">🟢 Veg Only</button>
+                <button class="diet-pill nonveg-pill" data-diet="nonveg">🔴 Non-Veg</button>
               </div>
             </div>
           </div>
@@ -571,58 +563,58 @@
               <div class="accordion-body">
                 <div class="menu-items-grid">
                   <p class="menu-subcategory-label">Only Cheese Pizza (6in / 9in / 12in)</p>
-                  <div class="menu-item-row" data-name="Single Cheese" data-desc="Only Cheese"><div class="menu-item-info"><span class="menu-item-name">Single Cheese</span><span class="menu-item-desc">Only Cheese</span></div><span class="menu-item-price">₹70 / 200 / 360</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Double Cheese" data-desc="Lot of Cheese &amp; Cheese"><div class="menu-item-info"><span class="menu-item-name">Double Cheese</span><span class="menu-item-desc">Lot of Cheese &amp; Cheese</span></div><span class="menu-item-price">₹120 / 300 / 460</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Chilli Cheese" data-desc="Cheese | Chilli Flakes"><div class="menu-item-info"><span class="menu-item-name">Chilli Cheese</span><span class="menu-item-desc">Cheese | Chilli Flakes</span></div><span class="menu-item-price">₹80 / 200 / 360</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Peri Peri Cheese" data-desc="Cheese | Spiced Piri Piri Mayo"><div class="menu-item-info"><span class="menu-item-name">Peri Peri Cheese</span><span class="menu-item-desc">Cheese | Spiced Piri Piri Mayo</span></div><span class="menu-item-price">₹100 / 220 / 380</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Tandoori Mayo Cheese" data-desc="Cheese | Unique Tandoori Mayo"><div class="menu-item-info"><span class="menu-item-name">Tandoori Mayo Cheese</span><span class="menu-item-desc">Cheese | Unique Tandoori Mayo</span></div><span class="menu-item-price">₹100 / 220 / 380</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Peri Peri Sausage" data-desc="Cheese | Sausage with Piri Piri Mix"><div class="menu-item-info"><span class="menu-item-name">Peri Peri Sausage</span><span class="menu-item-desc">Cheese | Sausage with Piri Piri Mix</span></div><span class="menu-item-price">₹150 / 240 / 400</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Cheese n Corn" data-desc="Cheese | Sweet Corn"><div class="menu-item-info"><span class="menu-item-name">Cheese n Corn</span><span class="menu-item-desc">Cheese | Sweet Corn</span></div><span class="menu-item-price">₹100 / 220 / 380</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Cheese n Tomato" data-desc="Cheese | Sliced Tomatoes"><div class="menu-item-info"><span class="menu-item-name">Cheese n Tomato</span><span class="menu-item-desc">Cheese | Sliced Tomatoes</span></div><span class="menu-item-price">₹100 / 220 / 380</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Cheese n Onion" data-desc="Cheese | Sliced Onions"><div class="menu-item-info"><span class="menu-item-name">Cheese n Onion</span><span class="menu-item-desc">Cheese | Sliced Onions</span></div><span class="menu-item-price">₹100 / 220 / 380</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Pesto Cheese" data-desc="Cheese | Pesto Sauce"><div class="menu-item-info"><span class="menu-item-name">Pesto Cheese</span><span class="menu-item-desc">Cheese | Pesto Sauce</span></div><span class="menu-item-price">₹100 / 220 / 380</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Single Cheese" data-desc="Only Cheese"><div class="menu-item-info"><span class="menu-item-name">Single Cheese</span><span class="menu-item-desc">Only Cheese</span></div><span class="menu-item-price">₹70 / 200 / 360</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Double Cheese" data-desc="Lot of Cheese &amp; Cheese"><div class="menu-item-info"><span class="menu-item-name">Double Cheese</span><span class="menu-item-desc">Lot of Cheese &amp; Cheese</span></div><span class="menu-item-price">₹120 / 300 / 460</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Chilli Cheese" data-desc="Cheese | Chilli Flakes"><div class="menu-item-info"><span class="menu-item-name">Chilli Cheese</span><span class="menu-item-desc">Cheese | Chilli Flakes</span></div><span class="menu-item-price">₹80 / 200 / 360</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Peri Peri Cheese" data-desc="Cheese | Spiced Piri Piri Mayo"><div class="menu-item-info"><span class="menu-item-name">Peri Peri Cheese</span><span class="menu-item-desc">Cheese | Spiced Piri Piri Mayo</span></div><span class="menu-item-price">₹100 / 220 / 380</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Tandoori Mayo Cheese" data-desc="Cheese | Unique Tandoori Mayo"><div class="menu-item-info"><span class="menu-item-name">Tandoori Mayo Cheese</span><span class="menu-item-desc">Cheese | Unique Tandoori Mayo</span></div><span class="menu-item-price">₹100 / 220 / 380</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="nonveg" data-name="Peri Peri Sausage" data-desc="Cheese | Sausage with Piri Piri Mix"><div class="menu-item-info"><span class="menu-item-name">Peri Peri Sausage</span><span class="menu-item-desc">Cheese | Sausage with Piri Piri Mix</span></div><span class="menu-item-price">₹150 / 240 / 400</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Cheese n Corn" data-desc="Cheese | Sweet Corn"><div class="menu-item-info"><span class="menu-item-name">Cheese n Corn</span><span class="menu-item-desc">Cheese | Sweet Corn</span></div><span class="menu-item-price">₹100 / 220 / 380</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Cheese n Tomato" data-desc="Cheese | Sliced Tomatoes"><div class="menu-item-info"><span class="menu-item-name">Cheese n Tomato</span><span class="menu-item-desc">Cheese | Sliced Tomatoes</span></div><span class="menu-item-price">₹100 / 220 / 380</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Cheese n Onion" data-desc="Cheese | Sliced Onions"><div class="menu-item-info"><span class="menu-item-name">Cheese n Onion</span><span class="menu-item-desc">Cheese | Sliced Onions</span></div><span class="menu-item-price">₹100 / 220 / 380</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Pesto Cheese" data-desc="Cheese | Pesto Sauce"><div class="menu-item-info"><span class="menu-item-name">Pesto Cheese</span><span class="menu-item-desc">Cheese | Pesto Sauce</span></div><span class="menu-item-price">₹100 / 220 / 380</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
                   <p class="menu-subcategory-label">Simple Pizza (6in / 9in / 12in)</p>
-                  <div class="menu-item-row" data-name="Fresh Delight" data-desc="Onion | Capsicum | Tomato"><div class="menu-item-info"><span class="menu-item-name">Fresh Delight</span><span class="menu-item-desc">Onion | Capsicum | Tomato</span></div><span class="menu-item-price">₹120 / 260 / 420</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Only Spice" data-desc="Paprika | Olives | Jalapeno | Capsicum"><div class="menu-item-info"><span class="menu-item-name">Only Spice</span><span class="menu-item-desc">Paprika | Olives | Jalapeno | Capsicum</span></div><span class="menu-item-price">₹120 / 260 / 420</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Awesome Veg" data-desc="Onion | Tomato | Corn"><div class="menu-item-info"><span class="menu-item-name">Awesome Veg</span><span class="menu-item-desc">Onion | Tomato | Corn</span></div><span class="menu-item-price">₹120 / 260 / 420</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Fresh Delight" data-desc="Onion | Capsicum | Tomato"><div class="menu-item-info"><span class="menu-item-name">Fresh Delight</span><span class="menu-item-desc">Onion | Capsicum | Tomato</span></div><span class="menu-item-price">₹120 / 260 / 420</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Only Spice" data-desc="Paprika | Olives | Jalapeno | Capsicum"><div class="menu-item-info"><span class="menu-item-name">Only Spice</span><span class="menu-item-desc">Paprika | Olives | Jalapeno | Capsicum</span></div><span class="menu-item-price">₹120 / 260 / 420</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Awesome Veg" data-desc="Onion | Tomato | Corn"><div class="menu-item-info"><span class="menu-item-name">Awesome Veg</span><span class="menu-item-desc">Onion | Tomato | Corn</span></div><span class="menu-item-price">₹120 / 260 / 420</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
                   <p class="menu-subcategory-label">Veg Pizza (9in / 12in)</p>
-                  <div class="menu-item-row" data-name="Indian Bite" data-desc="Corn | Mushroom | Olives"><div class="menu-item-info"><span class="menu-item-name">Indian Bite</span><span class="menu-item-desc">Corn | Mushroom | Olives</span></div><span class="menu-item-price">₹300 / 460</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Hawaiian Veg" data-desc="Paneer | Pineapple | Corn"><div class="menu-item-info"><span class="menu-item-name">Hawaiian Veg</span><span class="menu-item-desc">Paneer | Pineapple | Corn</span></div><span class="menu-item-price">₹300 / 460</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Peppy Paneer" data-desc="Paneer | Capsicum | Red Paprika"><div class="menu-item-info"><span class="menu-item-name">Peppy Paneer</span><span class="menu-item-desc">Paneer | Capsicum | Red Paprika</span></div><span class="menu-item-price">₹300 / 460</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Peri Peri Corn" data-desc="Sweet Corn | Capsicum | Onion"><div class="menu-item-info"><span class="menu-item-name">Peri Peri Corn</span><span class="menu-item-desc">Sweet Corn | Capsicum | Onion</span></div><span class="menu-item-price">₹300 / 460</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Mushroom Pizza" data-desc="Button Mushroom | Capsicum | Onion"><div class="menu-item-info"><span class="menu-item-name">Mushroom Pizza</span><span class="menu-item-desc">Button Mushroom | Capsicum | Onion</span></div><span class="menu-item-price">₹300 / 460</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Paneer n Corn" data-desc="Paneer | Corn | Tomato | Onion"><div class="menu-item-info"><span class="menu-item-name">Paneer n Corn</span><span class="menu-item-desc">Paneer | Corn | Tomato | Onion</span></div><span class="menu-item-price">₹300 / 460</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Pesto Paneer" data-desc="Basil Pesto Marinated Paneer | Onion"><div class="menu-item-info"><span class="menu-item-name">Pesto Paneer</span><span class="menu-item-desc">Basil Pesto Marinated Paneer | Onion</span></div><span class="menu-item-price">₹300 / 460</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Peri Peri Paneer" data-desc="Spiced Peri Mix Paneer | Capsicum"><div class="menu-item-info"><span class="menu-item-name">Peri Peri Paneer</span><span class="menu-item-desc">Spiced Peri Mix Paneer | Capsicum</span></div><span class="menu-item-price">₹300 / 460</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Tandoor Mayo Corn" data-desc="Sweet Corn | Onion | Tomato"><div class="menu-item-info"><span class="menu-item-name">Tandoor Mayo Corn</span><span class="menu-item-desc">Sweet Corn | Onion | Tomato</span></div><span class="menu-item-price">₹300 / 460</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Teriyaki Paneer" data-desc="Japanese Teriyaki Paneer | Capsicum"><div class="menu-item-info"><span class="menu-item-name">Teriyaki Paneer</span><span class="menu-item-desc">Japanese Teriyaki Paneer | Capsicum</span></div><span class="menu-item-price">₹300 / 460</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="BBQ Paneer" data-desc="Spiced BBQ Masala | Onion"><div class="menu-item-info"><span class="menu-item-name">BBQ Paneer</span><span class="menu-item-desc">Spiced BBQ Masala | Onion</span></div><span class="menu-item-price">₹300 / 460</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Barbeque Paneer" data-desc="Smoky Barbeque Paneer | Onion | Tomato"><div class="menu-item-info"><span class="menu-item-name">Barbeque Paneer</span><span class="menu-item-desc">Smoky Barbeque Paneer | Onion | Tomato</span></div><span class="menu-item-price">₹300 / 460</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Shahi Paneer Pizza" data-desc="Shahi Marinated Paneer | Onion"><div class="menu-item-info"><span class="menu-item-name">Shahi Paneer Pizza</span><span class="menu-item-desc">Shahi Marinated Paneer | Onion</span></div><span class="menu-item-price">₹300 / 460</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Makhani Paneer" data-desc="Makhani Marinated Paneer | Onion"><div class="menu-item-info"><span class="menu-item-name">Makhani Paneer</span><span class="menu-item-desc">Makhani Marinated Paneer | Onion</span></div><span class="menu-item-price">₹300 / 460</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Schezwan Paneer" data-desc="Schezwan Paneer | Capsicum"><div class="menu-item-info"><span class="menu-item-name">Schezwan Paneer</span><span class="menu-item-desc">Schezwan Paneer | Capsicum</span></div><span class="menu-item-price">₹300 / 460</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Tandoori Mayo Paneer" data-desc="Tandoori Mayo Paneer | Capsicum"><div class="menu-item-info"><span class="menu-item-name">Tandoori Mayo Paneer</span><span class="menu-item-desc">Tandoori Mayo Paneer | Capsicum</span></div><span class="menu-item-price">₹300 / 460</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Magic Mushroom Pizza" data-desc="Schezwan Mushroom | Onion"><div class="menu-item-info"><span class="menu-item-name">Magic Mushroom Pizza</span><span class="menu-item-desc">Schezwan Mushroom | Onion</span></div><span class="menu-item-price">₹300 / 460</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Dairy Den Mix" data-desc="Pesto Paneer | Magic Mushroom | Onion"><div class="menu-item-info"><span class="menu-item-name">Dairy Den Mix</span><span class="menu-item-desc">Pesto Paneer | Magic Mushroom | Onion</span></div><span class="menu-item-price">₹300 / 460</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Indian Bite" data-desc="Corn | Mushroom | Olives"><div class="menu-item-info"><span class="menu-item-name">Indian Bite</span><span class="menu-item-desc">Corn | Mushroom | Olives</span></div><span class="menu-item-price">₹300 / 460</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Hawaiian Veg" data-desc="Paneer | Pineapple | Corn"><div class="menu-item-info"><span class="menu-item-name">Hawaiian Veg</span><span class="menu-item-desc">Paneer | Pineapple | Corn</span></div><span class="menu-item-price">₹300 / 460</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Peppy Paneer" data-desc="Paneer | Capsicum | Red Paprika"><div class="menu-item-info"><span class="menu-item-name">Peppy Paneer</span><span class="menu-item-desc">Paneer | Capsicum | Red Paprika</span></div><span class="menu-item-price">₹300 / 460</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Peri Peri Corn" data-desc="Sweet Corn | Capsicum | Onion"><div class="menu-item-info"><span class="menu-item-name">Peri Peri Corn</span><span class="menu-item-desc">Sweet Corn | Capsicum | Onion</span></div><span class="menu-item-price">₹300 / 460</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Mushroom Pizza" data-desc="Button Mushroom | Capsicum | Onion"><div class="menu-item-info"><span class="menu-item-name">Mushroom Pizza</span><span class="menu-item-desc">Button Mushroom | Capsicum | Onion</span></div><span class="menu-item-price">₹300 / 460</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Paneer n Corn" data-desc="Paneer | Corn | Tomato | Onion"><div class="menu-item-info"><span class="menu-item-name">Paneer n Corn</span><span class="menu-item-desc">Paneer | Corn | Tomato | Onion</span></div><span class="menu-item-price">₹300 / 460</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Pesto Paneer" data-desc="Basil Pesto Marinated Paneer | Onion"><div class="menu-item-info"><span class="menu-item-name">Pesto Paneer</span><span class="menu-item-desc">Basil Pesto Marinated Paneer | Onion</span></div><span class="menu-item-price">₹300 / 460</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Peri Peri Paneer" data-desc="Spiced Peri Mix Paneer | Capsicum"><div class="menu-item-info"><span class="menu-item-name">Peri Peri Paneer</span><span class="menu-item-desc">Spiced Peri Mix Paneer | Capsicum</span></div><span class="menu-item-price">₹300 / 460</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Tandoor Mayo Corn" data-desc="Sweet Corn | Onion | Tomato"><div class="menu-item-info"><span class="menu-item-name">Tandoor Mayo Corn</span><span class="menu-item-desc">Sweet Corn | Onion | Tomato</span></div><span class="menu-item-price">₹300 / 460</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Teriyaki Paneer" data-desc="Japanese Teriyaki Paneer | Capsicum"><div class="menu-item-info"><span class="menu-item-name">Teriyaki Paneer</span><span class="menu-item-desc">Japanese Teriyaki Paneer | Capsicum</span></div><span class="menu-item-price">₹300 / 460</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="BBQ Paneer" data-desc="Spiced BBQ Masala | Onion"><div class="menu-item-info"><span class="menu-item-name">BBQ Paneer</span><span class="menu-item-desc">Spiced BBQ Masala | Onion</span></div><span class="menu-item-price">₹300 / 460</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Barbeque Paneer" data-desc="Smoky Barbeque Paneer | Onion | Tomato"><div class="menu-item-info"><span class="menu-item-name">Barbeque Paneer</span><span class="menu-item-desc">Smoky Barbeque Paneer | Onion | Tomato</span></div><span class="menu-item-price">₹300 / 460</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Shahi Paneer Pizza" data-desc="Shahi Marinated Paneer | Onion"><div class="menu-item-info"><span class="menu-item-name">Shahi Paneer Pizza</span><span class="menu-item-desc">Shahi Marinated Paneer | Onion</span></div><span class="menu-item-price">₹300 / 460</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Makhani Paneer" data-desc="Makhani Marinated Paneer | Onion"><div class="menu-item-info"><span class="menu-item-name">Makhani Paneer</span><span class="menu-item-desc">Makhani Marinated Paneer | Onion</span></div><span class="menu-item-price">₹300 / 460</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Schezwan Paneer" data-desc="Schezwan Paneer | Capsicum"><div class="menu-item-info"><span class="menu-item-name">Schezwan Paneer</span><span class="menu-item-desc">Schezwan Paneer | Capsicum</span></div><span class="menu-item-price">₹300 / 460</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Tandoori Mayo Paneer" data-desc="Tandoori Mayo Paneer | Capsicum"><div class="menu-item-info"><span class="menu-item-name">Tandoori Mayo Paneer</span><span class="menu-item-desc">Tandoori Mayo Paneer | Capsicum</span></div><span class="menu-item-price">₹300 / 460</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Magic Mushroom Pizza" data-desc="Schezwan Mushroom | Onion"><div class="menu-item-info"><span class="menu-item-name">Magic Mushroom Pizza</span><span class="menu-item-desc">Schezwan Mushroom | Onion</span></div><span class="menu-item-price">₹300 / 460</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Dairy Den Mix" data-desc="Pesto Paneer | Magic Mushroom | Onion"><div class="menu-item-info"><span class="menu-item-name">Dairy Den Mix</span><span class="menu-item-desc">Pesto Paneer | Magic Mushroom | Onion</span></div><span class="menu-item-price">₹300 / 460</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
                   <p class="menu-subcategory-label">Chicken Pizza (6in / 9in / 12in)</p>
-                  <div class="menu-item-row" data-name="Chicken Pizza" data-desc="Juicy Chicken | Capsicum | Onion"><div class="menu-item-info"><span class="menu-item-name">Chicken Pizza</span><span class="menu-item-desc">Juicy Chicken | Capsicum | Onion</span></div><span class="menu-item-price">₹200 / 350 / 510</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Chicken Salami Pizza" data-desc="Sliced Chicken Salami | Onion | Olives"><div class="menu-item-info"><span class="menu-item-name">Chicken Salami Pizza</span><span class="menu-item-desc">Sliced Chicken Salami | Onion | Olives</span></div><span class="menu-item-price">₹200 / 350 / 510</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Chicken Pepperoni Pizza" data-desc="Sliced Chicken Pepperoni | Capsicum | Paprika"><div class="menu-item-info"><span class="menu-item-name">Chicken Pepperoni Pizza</span><span class="menu-item-desc">Sliced Chicken Pepperoni | Capsicum | Paprika</span></div><span class="menu-item-price">₹200 / 350 / 510</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Pesto Chicken Pizza" data-desc="Basil Pesto Marinated Chicken | Tomato | Onion"><div class="menu-item-info"><span class="menu-item-name">Pesto Chicken Pizza</span><span class="menu-item-desc">Basil Pesto Marinated Chicken | Tomato | Onion</span></div><span class="menu-item-price">₹200 / 350 / 510</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Chicken Sausage Pizza" data-desc="Spiced Chicken Sausage | Capsicum | Onion"><div class="menu-item-info"><span class="menu-item-name">Chicken Sausage Pizza</span><span class="menu-item-desc">Spiced Chicken Sausage | Capsicum | Onion</span></div><span class="menu-item-price">₹200 / 350 / 510</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="nonveg" data-name="Chicken Pizza" data-desc="Juicy Chicken | Capsicum | Onion"><div class="menu-item-info"><span class="menu-item-name">Chicken Pizza</span><span class="menu-item-desc">Juicy Chicken | Capsicum | Onion</span></div><span class="menu-item-price">₹200 / 350 / 510</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="nonveg" data-name="Chicken Salami Pizza" data-desc="Sliced Chicken Salami | Onion | Olives"><div class="menu-item-info"><span class="menu-item-name">Chicken Salami Pizza</span><span class="menu-item-desc">Sliced Chicken Salami | Onion | Olives</span></div><span class="menu-item-price">₹200 / 350 / 510</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="nonveg" data-name="Chicken Pepperoni Pizza" data-desc="Sliced Chicken Pepperoni | Capsicum | Paprika"><div class="menu-item-info"><span class="menu-item-name">Chicken Pepperoni Pizza</span><span class="menu-item-desc">Sliced Chicken Pepperoni | Capsicum | Paprika</span></div><span class="menu-item-price">₹200 / 350 / 510</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="nonveg" data-name="Pesto Chicken Pizza" data-desc="Basil Pesto Marinated Chicken | Tomato | Onion"><div class="menu-item-info"><span class="menu-item-name">Pesto Chicken Pizza</span><span class="menu-item-desc">Basil Pesto Marinated Chicken | Tomato | Onion</span></div><span class="menu-item-price">₹200 / 350 / 510</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="nonveg" data-name="Chicken Sausage Pizza" data-desc="Spiced Chicken Sausage | Capsicum | Onion"><div class="menu-item-info"><span class="menu-item-name">Chicken Sausage Pizza</span><span class="menu-item-desc">Spiced Chicken Sausage | Capsicum | Onion</span></div><span class="menu-item-price">₹200 / 350 / 510</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
                   <p class="menu-subcategory-label">Chicken Pizza (9in / 12in)</p>
-                  <div class="menu-item-row" data-name="Smoky Barbeque Chicken Pizza" data-desc="Real Lump BBQ Chicken"><div class="menu-item-info"><span class="menu-item-name">Smoky Barbeque Chicken Pizza</span><span class="menu-item-desc">Real Lump BBQ Chicken</span></div><span class="menu-item-price">₹350 / 510</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Tandoori Mayo Chicken Pizza" data-desc="Tandoori Mayo Chicken | Capsicum | Onion"><div class="menu-item-info"><span class="menu-item-name">Tandoori Mayo Chicken Pizza</span><span class="menu-item-desc">Tandoori Mayo Chicken | Capsicum | Onion</span></div><span class="menu-item-price">₹350 / 510</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Golden Corn Chicken Pizza" data-desc="Juicy Chicken | Corn | Onion"><div class="menu-item-info"><span class="menu-item-name">Golden Corn Chicken Pizza</span><span class="menu-item-desc">Juicy Chicken | Corn | Onion</span></div><span class="menu-item-price">₹350 / 510</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Chicken Makhani Pizza" data-desc="Rich Chicken | Capsicum | Tomato"><div class="menu-item-info"><span class="menu-item-name">Chicken Makhani Pizza</span><span class="menu-item-desc">Rich Chicken | Capsicum | Tomato</span></div><span class="menu-item-price">₹350 / 510</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Fried Chicken Pizza" data-desc="Crispy Boneless Fried Chicken | Onion"><div class="menu-item-info"><span class="menu-item-name">Fried Chicken Pizza</span><span class="menu-item-desc">Crispy Boneless Fried Chicken | Onion</span></div><span class="menu-item-price">₹350 / 510</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Garlic Chicken Pizza" data-desc="Chilli Garlic Spiced Mix Chicken | Tomato | Onion"><div class="menu-item-info"><span class="menu-item-name">Garlic Chicken Pizza</span><span class="menu-item-desc">Chilli Garlic Spiced Mix Chicken | Tomato | Onion</span></div><span class="menu-item-price">₹350 / 510</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="BBQ Chicken Pizza" data-desc="Spicy BBQ Masala Chicken | Capsicum | Onion"><div class="menu-item-info"><span class="menu-item-name">BBQ Chicken Pizza</span><span class="menu-item-desc">Spicy BBQ Masala Chicken | Capsicum | Onion</span></div><span class="menu-item-price">₹350 / 510</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Sicilian Chicken Pizza" data-desc="Spiced Diced Chicken | Capsicum"><div class="menu-item-info"><span class="menu-item-name">Sicilian Chicken Pizza</span><span class="menu-item-desc">Spiced Diced Chicken | Capsicum</span></div><span class="menu-item-price">₹350 / 510</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Indian Bite Chicken Pizza" data-desc="Juicy Chicken | Corn | Mushroom"><div class="menu-item-info"><span class="menu-item-name">Indian Bite Chicken Pizza</span><span class="menu-item-desc">Juicy Chicken | Corn | Mushroom</span></div><span class="menu-item-price">₹350 / 510</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="nonveg" data-name="Smoky Barbeque Chicken Pizza" data-desc="Real Lump BBQ Chicken"><div class="menu-item-info"><span class="menu-item-name">Smoky Barbeque Chicken Pizza</span><span class="menu-item-desc">Real Lump BBQ Chicken</span></div><span class="menu-item-price">₹350 / 510</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="nonveg" data-name="Tandoori Mayo Chicken Pizza" data-desc="Tandoori Mayo Chicken | Capsicum | Onion"><div class="menu-item-info"><span class="menu-item-name">Tandoori Mayo Chicken Pizza</span><span class="menu-item-desc">Tandoori Mayo Chicken | Capsicum | Onion</span></div><span class="menu-item-price">₹350 / 510</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="nonveg" data-name="Golden Corn Chicken Pizza" data-desc="Juicy Chicken | Corn | Onion"><div class="menu-item-info"><span class="menu-item-name">Golden Corn Chicken Pizza</span><span class="menu-item-desc">Juicy Chicken | Corn | Onion</span></div><span class="menu-item-price">₹350 / 510</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="nonveg" data-name="Chicken Makhani Pizza" data-desc="Rich Chicken | Capsicum | Tomato"><div class="menu-item-info"><span class="menu-item-name">Chicken Makhani Pizza</span><span class="menu-item-desc">Rich Chicken | Capsicum | Tomato</span></div><span class="menu-item-price">₹350 / 510</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="nonveg" data-name="Fried Chicken Pizza" data-desc="Crispy Boneless Fried Chicken | Onion"><div class="menu-item-info"><span class="menu-item-name">Fried Chicken Pizza</span><span class="menu-item-desc">Crispy Boneless Fried Chicken | Onion</span></div><span class="menu-item-price">₹350 / 510</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="nonveg" data-name="Garlic Chicken Pizza" data-desc="Chilli Garlic Spiced Mix Chicken | Tomato | Onion"><div class="menu-item-info"><span class="menu-item-name">Garlic Chicken Pizza</span><span class="menu-item-desc">Chilli Garlic Spiced Mix Chicken | Tomato | Onion</span></div><span class="menu-item-price">₹350 / 510</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="nonveg" data-name="BBQ Chicken Pizza" data-desc="Spicy BBQ Masala Chicken | Capsicum | Onion"><div class="menu-item-info"><span class="menu-item-name">BBQ Chicken Pizza</span><span class="menu-item-desc">Spicy BBQ Masala Chicken | Capsicum | Onion</span></div><span class="menu-item-price">₹350 / 510</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="nonveg" data-name="Sicilian Chicken Pizza" data-desc="Spiced Diced Chicken | Capsicum"><div class="menu-item-info"><span class="menu-item-name">Sicilian Chicken Pizza</span><span class="menu-item-desc">Spiced Diced Chicken | Capsicum</span></div><span class="menu-item-price">₹350 / 510</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="nonveg" data-name="Indian Bite Chicken Pizza" data-desc="Juicy Chicken | Corn | Mushroom"><div class="menu-item-info"><span class="menu-item-name">Indian Bite Chicken Pizza</span><span class="menu-item-desc">Juicy Chicken | Corn | Mushroom</span></div><span class="menu-item-price">₹350 / 510</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
                   <p class="menu-subcategory-label">Loaded Pizza</p>
-                  <div class="menu-item-row" data-name="Veg Loaded Pizza" data-desc="Shahi Paneer | Peri Peri Corn | Magic Mushroom"><div class="menu-item-info"><span class="menu-item-name">Veg Loaded Pizza</span><span class="menu-item-desc">Shahi Paneer | Peri Peri Corn | Magic Mushroom</span></div><span class="menu-item-price">₹400 / 560</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Non-Veg Loaded Pizza" data-desc="Peri Peri Chicken | Spiced Sausage | Smoky BBQ Chicken | Chicken Salami"><div class="menu-item-info"><span class="menu-item-name">Non-Veg Loaded Pizza</span><span class="menu-item-desc">Peri Peri Chicken | Spiced Sausage | Smoky BBQ Chicken | Chicken Salami</span></div><span class="menu-item-price">₹450 / 610</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Veg Loaded Pizza" data-desc="Shahi Paneer | Peri Peri Corn | Magic Mushroom"><div class="menu-item-info"><span class="menu-item-name">Veg Loaded Pizza</span><span class="menu-item-desc">Shahi Paneer | Peri Peri Corn | Magic Mushroom</span></div><span class="menu-item-price">₹400 / 560</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Non-Veg Loaded Pizza" data-desc="Peri Peri Chicken | Spiced Sausage | Smoky BBQ Chicken | Chicken Salami"><div class="menu-item-info"><span class="menu-item-name">Non-Veg Loaded Pizza</span><span class="menu-item-desc">Peri Peri Chicken | Spiced Sausage | Smoky BBQ Chicken | Chicken Salami</span></div><span class="menu-item-price">₹450 / 610</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
                 </div>
               </div>
             </div>
@@ -636,17 +628,17 @@
               </button>
               <div class="accordion-body">
                 <div class="menu-items-grid">
-                  <div class="menu-item-row" data-name="French Fries" data-desc=""><div class="menu-item-info"><span class="menu-item-name">French Fries</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Peri Peri Fries" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Peri Peri Fries</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Tandoori Mayo Fries" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Tandoori Mayo Fries</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Masala Fries" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Masala Fries</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Smiles" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Smiles</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Aloo Tikki" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Aloo Tikki</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Corn Cheese Nuggets" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Corn Cheese Nuggets</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Potato Cheese Shots" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Potato Cheese Shots</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Veg Fingers" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Veg Fingers</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Veg Nuggets" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Veg Nuggets</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Garlic Bites" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Garlic Bites</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="French Fries" data-desc=""><div class="menu-item-info"><span class="menu-item-name">French Fries</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Peri Peri Fries" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Peri Peri Fries</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Tandoori Mayo Fries" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Tandoori Mayo Fries</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Masala Fries" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Masala Fries</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Smiles" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Smiles</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Aloo Tikki" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Aloo Tikki</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Corn Cheese Nuggets" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Corn Cheese Nuggets</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Potato Cheese Shots" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Potato Cheese Shots</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Veg Fingers" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Veg Fingers</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Veg Nuggets" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Veg Nuggets</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Garlic Bites" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Garlic Bites</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
                 </div>
               </div>
             </div>
@@ -660,19 +652,19 @@
               </button>
               <div class="accordion-body">
                 <div class="menu-items-grid">
-                  <div class="menu-item-row" data-name="Veg Cheese Sandwich" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Veg Cheese Sandwich</span></div><span class="menu-item-price">₹100</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Cheese Sandwich" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Cheese Sandwich</span></div><span class="menu-item-price">₹100</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Chilli Cheese Sandwich" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Chilli Cheese Sandwich</span></div><span class="menu-item-price">₹120</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Sweet Corn Sandwich" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Sweet Corn Sandwich</span></div><span class="menu-item-price">₹100</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Paneer Sandwich" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Paneer Sandwich</span></div><span class="menu-item-price">₹120</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Paneer Corn Sandwich" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Paneer Corn Sandwich</span></div><span class="menu-item-price">₹150</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Mushroom Sandwich" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Mushroom Sandwich</span></div><span class="menu-item-price">₹120</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Egg Sandwich" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Egg Sandwich</span></div><span class="menu-item-price">₹110</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Chicken Mayo Sandwich" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Chicken Mayo Sandwich</span></div><span class="menu-item-price">₹150</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Peri Peri Chicken Sandwich" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Peri Peri Chicken Sandwich</span></div><span class="menu-item-price">₹160</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Fried Chicken Sandwich" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Fried Chicken Sandwich</span></div><span class="menu-item-price">₹160</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Chicken Cheese Sandwich" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Chicken Cheese Sandwich</span></div><span class="menu-item-price">₹170</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Club Chicken Sandwich" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Club Chicken Sandwich</span></div><span class="menu-item-price">₹200</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Veg Cheese Sandwich" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Veg Cheese Sandwich</span></div><span class="menu-item-price">₹100</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Cheese Sandwich" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Cheese Sandwich</span></div><span class="menu-item-price">₹100</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Chilli Cheese Sandwich" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Chilli Cheese Sandwich</span></div><span class="menu-item-price">₹120</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Sweet Corn Sandwich" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Sweet Corn Sandwich</span></div><span class="menu-item-price">₹100</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Paneer Sandwich" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Paneer Sandwich</span></div><span class="menu-item-price">₹120</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Paneer Corn Sandwich" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Paneer Corn Sandwich</span></div><span class="menu-item-price">₹150</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Mushroom Sandwich" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Mushroom Sandwich</span></div><span class="menu-item-price">₹120</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="nonveg" data-name="Egg Sandwich" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Egg Sandwich</span></div><span class="menu-item-price">₹110</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="nonveg" data-name="Chicken Mayo Sandwich" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Chicken Mayo Sandwich</span></div><span class="menu-item-price">₹150</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="nonveg" data-name="Peri Peri Chicken Sandwich" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Peri Peri Chicken Sandwich</span></div><span class="menu-item-price">₹160</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="nonveg" data-name="Fried Chicken Sandwich" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Fried Chicken Sandwich</span></div><span class="menu-item-price">₹160</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="nonveg" data-name="Chicken Cheese Sandwich" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Chicken Cheese Sandwich</span></div><span class="menu-item-price">₹170</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="nonveg" data-name="Club Chicken Sandwich" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Club Chicken Sandwich</span></div><span class="menu-item-price">₹200</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
                 </div>
               </div>
             </div>
@@ -687,17 +679,17 @@
               <div class="accordion-body">
                 <div class="menu-items-grid">
                   <p class="menu-subcategory-label">Steam &amp; Fried</p>
-                  <div class="menu-item-row" data-name="Veg Mix Momos" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Veg Mix Momos</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Veg Schezwan Momos" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Veg Schezwan Momos</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Corn Momos" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Corn Momos</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Corn Cheese Momos" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Corn Cheese Momos</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Mushroom Momos" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Mushroom Momos</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Paneer Tikka Momos" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Paneer Tikka Momos</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Chicken Momos" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Chicken Momos</span></div><span class="menu-item-price">₹140</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Chicken Cheese Momos" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Chicken Cheese Momos</span></div><span class="menu-item-price">₹160</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Chicken Barbeque Momos" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Chicken Barbeque Momos</span></div><span class="menu-item-price">₹160</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Chicken Tikka Momos" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Chicken Tikka Momos</span></div><span class="menu-item-price">₹160</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Chicken Peri Peri Momos" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Chicken Peri Peri Momos</span></div><span class="menu-item-price">₹160</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Veg Mix Momos" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Veg Mix Momos</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Veg Schezwan Momos" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Veg Schezwan Momos</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Corn Momos" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Corn Momos</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Corn Cheese Momos" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Corn Cheese Momos</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Mushroom Momos" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Mushroom Momos</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Paneer Tikka Momos" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Paneer Tikka Momos</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="nonveg" data-name="Chicken Momos" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Chicken Momos</span></div><span class="menu-item-price">₹140</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="nonveg" data-name="Chicken Cheese Momos" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Chicken Cheese Momos</span></div><span class="menu-item-price">₹160</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="nonveg" data-name="Chicken Barbeque Momos" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Chicken Barbeque Momos</span></div><span class="menu-item-price">₹160</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="nonveg" data-name="Chicken Tikka Momos" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Chicken Tikka Momos</span></div><span class="menu-item-price">₹160</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="nonveg" data-name="Chicken Peri Peri Momos" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Chicken Peri Peri Momos</span></div><span class="menu-item-price">₹160</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
                 </div>
               </div>
             </div>
@@ -711,14 +703,14 @@
               </button>
               <div class="accordion-body">
                 <div class="menu-items-grid">
-                  <div class="menu-item-row" data-name="Aloo Burger" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Aloo Burger</span></div><span class="menu-item-price">₹70</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Veg Pattie Burger" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Veg Pattie Burger</span></div><span class="menu-item-price">₹110</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Paneer Pattie Burger" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Paneer Pattie Burger</span></div><span class="menu-item-price">₹110</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Double Egg Burger" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Double Egg Burger</span></div><span class="menu-item-price">₹110</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Creamy Chicken Burger" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Creamy Chicken Burger</span></div><span class="menu-item-price">₹110</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Chicken Pattie Burger" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Chicken Pattie Burger</span></div><span class="menu-item-price">₹110</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Chicken Spl Burger" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Chicken Spl Burger</span></div><span class="menu-item-price">₹150</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Fried Chicken Burger" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Fried Chicken Burger</span></div><span class="menu-item-price">₹150</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Aloo Burger" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Aloo Burger</span></div><span class="menu-item-price">₹70</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Veg Pattie Burger" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Veg Pattie Burger</span></div><span class="menu-item-price">₹110</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Paneer Pattie Burger" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Paneer Pattie Burger</span></div><span class="menu-item-price">₹110</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="nonveg" data-name="Double Egg Burger" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Double Egg Burger</span></div><span class="menu-item-price">₹110</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="nonveg" data-name="Creamy Chicken Burger" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Creamy Chicken Burger</span></div><span class="menu-item-price">₹110</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="nonveg" data-name="Chicken Pattie Burger" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Chicken Pattie Burger</span></div><span class="menu-item-price">₹110</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="nonveg" data-name="Chicken Spl Burger" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Chicken Spl Burger</span></div><span class="menu-item-price">₹150</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="nonveg" data-name="Fried Chicken Burger" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Fried Chicken Burger</span></div><span class="menu-item-price">₹150</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
                 </div>
               </div>
             </div>
@@ -732,10 +724,10 @@
               </button>
               <div class="accordion-body">
                 <div class="menu-items-grid">
-                  <div class="menu-item-row" data-name="Chicken Lollipop" data-desc="4 pcs / 8 pcs"><div class="menu-item-info"><span class="menu-item-name">Chicken Lollipop</span><span class="menu-item-desc">4 pcs / 8 pcs</span></div><span class="menu-item-price">₹160 / 320</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Chicken Wings" data-desc="4 pcs / 8 pcs"><div class="menu-item-info"><span class="menu-item-name">Chicken Wings</span><span class="menu-item-desc">4 pcs / 8 pcs</span></div><span class="menu-item-price">₹160 / 320</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Chicken Loaded Fries" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Chicken Loaded Fries</span></div><span class="menu-item-price">₹200</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Fried Chicken Popcorn" data-desc="Boneless"><div class="menu-item-info"><span class="menu-item-name">Fried Chicken Popcorn</span><span class="menu-item-desc">Boneless</span></div><span class="menu-item-price">₹150</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="nonveg" data-name="Chicken Lollipop" data-desc="4 pcs / 8 pcs"><div class="menu-item-info"><span class="menu-item-name">Chicken Lollipop</span><span class="menu-item-desc">4 pcs / 8 pcs</span></div><span class="menu-item-price">₹160 / 320</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="nonveg" data-name="Chicken Wings" data-desc="4 pcs / 8 pcs"><div class="menu-item-info"><span class="menu-item-name">Chicken Wings</span><span class="menu-item-desc">4 pcs / 8 pcs</span></div><span class="menu-item-price">₹160 / 320</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="nonveg" data-name="Chicken Loaded Fries" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Chicken Loaded Fries</span></div><span class="menu-item-price">₹200</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="nonveg" data-name="Fried Chicken Popcorn" data-desc="Boneless"><div class="menu-item-info"><span class="menu-item-name">Fried Chicken Popcorn</span><span class="menu-item-desc">Boneless</span></div><span class="menu-item-price">₹150</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
                 </div>
               </div>
             </div>
@@ -749,11 +741,11 @@
               </button>
               <div class="accordion-body">
                 <div class="menu-items-grid">
-                  <div class="menu-item-row" data-name="Brownie" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Brownie</span></div><span class="menu-item-price">₹90</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Brownie Vanilla" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Brownie Vanilla</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Brownie Chocolate" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Brownie Chocolate</span></div><span class="menu-item-price">₹150</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Sizzling Vanilla" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Sizzling Vanilla</span></div><span class="menu-item-price">₹180</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Sizzling Chocolate" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Sizzling Chocolate</span></div><span class="menu-item-price">₹200</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Brownie" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Brownie</span></div><span class="menu-item-price">₹90</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Brownie Vanilla" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Brownie Vanilla</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Brownie Chocolate" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Brownie Chocolate</span></div><span class="menu-item-price">₹150</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Sizzling Vanilla" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Sizzling Vanilla</span></div><span class="menu-item-price">₹180</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Sizzling Chocolate" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Sizzling Chocolate</span></div><span class="menu-item-price">₹200</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
                 </div>
               </div>
             </div>
@@ -767,11 +759,11 @@
               </button>
               <div class="accordion-body">
                 <div class="menu-items-grid">
-                  <div class="menu-item-row" data-name="Falooda" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Falooda</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Tri Colour Falooda" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Tri Colour Falooda</span></div><span class="menu-item-price">₹160</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Tender Coconut Falooda" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Tender Coconut Falooda</span></div><span class="menu-item-price">₹150</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Fig &amp; Honey Falooda" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Fig &amp; Honey Falooda</span></div><span class="menu-item-price">₹150</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Dry Fruit Falooda" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Dry Fruit Falooda</span></div><span class="menu-item-price">₹180</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Falooda" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Falooda</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Tri Colour Falooda" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Tri Colour Falooda</span></div><span class="menu-item-price">₹160</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Tender Coconut Falooda" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Tender Coconut Falooda</span></div><span class="menu-item-price">₹150</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Fig &amp; Honey Falooda" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Fig &amp; Honey Falooda</span></div><span class="menu-item-price">₹150</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Dry Fruit Falooda" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Dry Fruit Falooda</span></div><span class="menu-item-price">₹180</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
                 </div>
               </div>
             </div>
@@ -785,14 +777,14 @@
               </button>
               <div class="accordion-body">
                 <div class="menu-items-grid">
-                  <div class="menu-item-row" data-name="Vanilla Ice Cream" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Vanilla Ice Cream</span></div><span class="menu-item-price">₹60</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Chocolate Ice Cream" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Chocolate Ice Cream</span></div><span class="menu-item-price">₹70</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Strawberry Ice Cream" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Strawberry Ice Cream</span></div><span class="menu-item-price">₹70</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Butterscotch Ice Cream" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Butterscotch Ice Cream</span></div><span class="menu-item-price">₹70</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Blackcurrant Ice Cream" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Blackcurrant Ice Cream</span></div><span class="menu-item-price">₹70</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Spanish Delight Ice Cream" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Spanish Delight Ice Cream</span></div><span class="menu-item-price">₹80</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Mango Ice Cream" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Mango Ice Cream</span></div><span class="menu-item-price">₹80</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Tender Coconut Ice Cream" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Tender Coconut Ice Cream</span></div><span class="menu-item-price">₹90</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Vanilla Ice Cream" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Vanilla Ice Cream</span></div><span class="menu-item-price">₹60</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Chocolate Ice Cream" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Chocolate Ice Cream</span></div><span class="menu-item-price">₹70</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Strawberry Ice Cream" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Strawberry Ice Cream</span></div><span class="menu-item-price">₹70</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Butterscotch Ice Cream" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Butterscotch Ice Cream</span></div><span class="menu-item-price">₹70</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Blackcurrant Ice Cream" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Blackcurrant Ice Cream</span></div><span class="menu-item-price">₹70</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Spanish Delight Ice Cream" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Spanish Delight Ice Cream</span></div><span class="menu-item-price">₹80</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Mango Ice Cream" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Mango Ice Cream</span></div><span class="menu-item-price">₹80</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Tender Coconut Ice Cream" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Tender Coconut Ice Cream</span></div><span class="menu-item-price">₹90</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
                 </div>
               </div>
             </div>
@@ -806,12 +798,12 @@
               </button>
               <div class="accordion-body">
                 <div class="menu-items-grid">
-                  <div class="menu-item-row" data-name="Cold Coffee" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Cold Coffee</span></div><span class="menu-item-price">₹110</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Ice Tea" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Ice Tea</span></div><span class="menu-item-price">₹110</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Cold Boost" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Cold Boost</span></div><span class="menu-item-price">₹110</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Cold Milo" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Cold Milo</span></div><span class="menu-item-price">₹110</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Cold Horlicks" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Cold Horlicks</span></div><span class="menu-item-price">₹110</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Caramel Cold Coffee" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Caramel Cold Coffee</span></div><span class="menu-item-price">₹150</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Cold Coffee" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Cold Coffee</span></div><span class="menu-item-price">₹110</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Ice Tea" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Ice Tea</span></div><span class="menu-item-price">₹110</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Cold Boost" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Cold Boost</span></div><span class="menu-item-price">₹110</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Cold Milo" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Cold Milo</span></div><span class="menu-item-price">₹110</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Cold Horlicks" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Cold Horlicks</span></div><span class="menu-item-price">₹110</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Caramel Cold Coffee" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Caramel Cold Coffee</span></div><span class="menu-item-price">₹150</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
                 </div>
               </div>
             </div>
@@ -825,8 +817,8 @@
               </button>
               <div class="accordion-body">
                 <div class="menu-items-grid">
-                  <div class="menu-item-row" data-name="Apple Juice" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Apple Juice</span></div><span class="menu-item-price">₹100</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Muskmelon Juice" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Muskmelon Juice</span></div><span class="menu-item-price">₹70</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Apple Juice" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Apple Juice</span></div><span class="menu-item-price">₹100</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Muskmelon Juice" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Muskmelon Juice</span></div><span class="menu-item-price">₹70</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
                 </div>
               </div>
             </div>
@@ -840,11 +832,11 @@
               </button>
               <div class="accordion-body">
                 <div class="menu-items-grid">
-                  <div class="menu-item-row" data-name="Classic Mojito" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Classic Mojito</span></div><span class="menu-item-price">₹100</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Strawberry Mojito" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Strawberry Mojito</span></div><span class="menu-item-price">₹100</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Mango Mojito" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Mango Mojito</span></div><span class="menu-item-price">₹100</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Blue Ocean Mojito" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Blue Ocean Mojito</span></div><span class="menu-item-price">₹100</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Blueberry Mojito" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Blueberry Mojito</span></div><span class="menu-item-price">₹100</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Classic Mojito" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Classic Mojito</span></div><span class="menu-item-price">₹100</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Strawberry Mojito" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Strawberry Mojito</span></div><span class="menu-item-price">₹100</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Mango Mojito" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Mango Mojito</span></div><span class="menu-item-price">₹100</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Blue Ocean Mojito" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Blue Ocean Mojito</span></div><span class="menu-item-price">₹100</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Blueberry Mojito" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Blueberry Mojito</span></div><span class="menu-item-price">₹100</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
                 </div>
               </div>
             </div>
@@ -858,22 +850,22 @@
               </button>
               <div class="accordion-body">
                 <div class="menu-items-grid">
-                  <div class="menu-item-row" data-name="Vanilla Milkshake" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Vanilla Milkshake</span></div><span class="menu-item-price">₹110</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Strawberry Milkshake" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Strawberry Milkshake</span></div><span class="menu-item-price">₹110</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Chocolate Milkshake" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Chocolate Milkshake</span></div><span class="menu-item-price">₹110</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Blackcurrant Milkshake" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Blackcurrant Milkshake</span></div><span class="menu-item-price">₹110</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Butterscotch Milkshake" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Butterscotch Milkshake</span></div><span class="menu-item-price">₹110</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Oreo Milkshake" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Oreo Milkshake</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Kitkat Milkshake" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Kitkat Milkshake</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Mango Milkshake" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Mango Milkshake</span></div><span class="menu-item-price">₹110</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Pineapple Milkshake" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Pineapple Milkshake</span></div><span class="menu-item-price">₹110</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Blueberry Milkshake" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Blueberry Milkshake</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Brownie Milkshake" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Brownie Milkshake</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Spanish Delight Milkshake" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Spanish Delight Milkshake</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Dates &amp; Banana Milkshake" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Dates &amp; Banana Milkshake</span></div><span class="menu-item-price">₹110</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Tender Coconut Milkshake" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Tender Coconut Milkshake</span></div><span class="menu-item-price">₹110</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Falooda Milkshake" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Falooda Milkshake</span></div><span class="menu-item-price">₹150</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Lotus Biscoff Milkshake" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Lotus Biscoff Milkshake</span></div><span class="menu-item-price">₹150</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Vanilla Milkshake" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Vanilla Milkshake</span></div><span class="menu-item-price">₹110</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Strawberry Milkshake" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Strawberry Milkshake</span></div><span class="menu-item-price">₹110</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Chocolate Milkshake" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Chocolate Milkshake</span></div><span class="menu-item-price">₹110</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Blackcurrant Milkshake" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Blackcurrant Milkshake</span></div><span class="menu-item-price">₹110</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Butterscotch Milkshake" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Butterscotch Milkshake</span></div><span class="menu-item-price">₹110</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Oreo Milkshake" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Oreo Milkshake</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Kitkat Milkshake" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Kitkat Milkshake</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Mango Milkshake" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Mango Milkshake</span></div><span class="menu-item-price">₹110</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Pineapple Milkshake" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Pineapple Milkshake</span></div><span class="menu-item-price">₹110</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Blueberry Milkshake" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Blueberry Milkshake</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Brownie Milkshake" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Brownie Milkshake</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Spanish Delight Milkshake" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Spanish Delight Milkshake</span></div><span class="menu-item-price">₹130</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Dates &amp; Banana Milkshake" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Dates &amp; Banana Milkshake</span></div><span class="menu-item-price">₹110</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Tender Coconut Milkshake" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Tender Coconut Milkshake</span></div><span class="menu-item-price">₹110</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Falooda Milkshake" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Falooda Milkshake</span></div><span class="menu-item-price">₹150</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Lotus Biscoff Milkshake" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Lotus Biscoff Milkshake</span></div><span class="menu-item-price">₹150</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
                 </div>
               </div>
             </div>
@@ -887,10 +879,10 @@
               </button>
               <div class="accordion-body">
                 <div class="menu-items-grid">
-                  <div class="menu-item-row" data-name="Single Cheese Add On" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Single Cheese Add On</span></div><span class="menu-item-price">₹50</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Double Cheese Add On" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Double Cheese Add On</span></div><span class="menu-item-price">₹80</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Cheese Blend" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Cheese Blend</span></div><span class="menu-item-price">₹30</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
-                  <div class="menu-item-row" data-name="Iced Sprite" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Iced Sprite</span></div><span class="menu-item-price">₹30</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Single Cheese Add On" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Single Cheese Add On</span></div><span class="menu-item-price">₹50</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Double Cheese Add On" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Double Cheese Add On</span></div><span class="menu-item-price">₹80</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Cheese Blend" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Cheese Blend</span></div><span class="menu-item-price">₹30</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
+                  <div class="menu-item-row" data-type="veg" data-name="Iced Sprite" data-desc=""><div class="menu-item-info"><span class="menu-item-name">Iced Sprite</span></div><span class="menu-item-price">₹30</span><button class="add-to-list-btn" aria-label="Add to my list">+</button></div>
                 </div>
               </div>
             </div>
@@ -919,7 +911,6 @@
           <div class="combo-grid">
 
             <div class="combo-card">
-              <button class="combo-card-save-btn" aria-label="Save to my list" data-combo-name="Starter Combo">Add +</button>
               <div class="combo-badge">Combo 1</div>
               <h3 class="h3 combo-name">Starter Combo</h3>
               <ul class="combo-items">
@@ -928,10 +919,10 @@
                 <li>Thumsup or Sprite</li>
               </ul>
               <div class="combo-price">₹99</div>
+              <button class="combo-card-save-btn" aria-label="Save to my list" data-combo-name="Starter Combo">Add to List +</button>
             </div>
 
             <div class="combo-card">
-              <button class="combo-card-save-btn" aria-label="Save to my list" data-combo-name="Pizza Combo">Add +</button>
               <div class="combo-badge">Combo 2</div>
               <h3 class="h3 combo-name">Pizza Combo</h3>
               <ul class="combo-items">
@@ -940,10 +931,10 @@
                 <li>Thumsup or Sprite</li>
               </ul>
               <div class="combo-price">₹159</div>
+              <button class="combo-card-save-btn" aria-label="Save to my list" data-combo-name="Pizza Combo">Add to List +</button>
             </div>
 
             <div class="combo-card">
-              <button class="combo-card-save-btn" aria-label="Save to my list" data-combo-name="Snack Combo">Add +</button>
               <div class="combo-badge">Combo 3</div>
               <h3 class="h3 combo-name">Snack Combo</h3>
               <ul class="combo-items">
@@ -953,10 +944,10 @@
                 <li>Lemon Iced Tea</li>
               </ul>
               <div class="combo-price">₹199</div>
+              <button class="combo-card-save-btn" aria-label="Save to my list" data-combo-name="Snack Combo">Add to List +</button>
             </div>
 
             <div class="combo-card">
-              <button class="combo-card-save-btn" aria-label="Save to my list" data-combo-name="Paneer Feast">Add +</button>
               <div class="combo-badge">Combo 4</div>
               <h3 class="h3 combo-name">Paneer Feast</h3>
               <ul class="combo-items">
@@ -966,10 +957,10 @@
                 <li>Thumsup or Sprite</li>
               </ul>
               <div class="combo-price">₹249</div>
+              <button class="combo-card-save-btn" aria-label="Save to my list" data-combo-name="Paneer Feast">Add to List +</button>
             </div>
 
             <div class="combo-card">
-              <button class="combo-card-save-btn" aria-label="Save to my list" data-combo-name="Chicken Feast">Add +</button>
               <div class="combo-badge">Combo 5</div>
               <h3 class="h3 combo-name">Chicken Feast</h3>
               <ul class="combo-items">
@@ -979,6 +970,7 @@
                 <li>Thumsup or Sprite</li>
               </ul>
               <div class="combo-price">₹249</div>
+              <button class="combo-card-save-btn" aria-label="Save to my list" data-combo-name="Chicken Feast">Add to List +</button>
             </div>
 
           </div>
@@ -1252,67 +1244,24 @@
 
         </ul>
 
-        <div class="footer-form">
+        <div class="footer-contact">
 
-          <div class="form-tab-wrapper">
-            <button class="form-tab active" data-form-tab="book">Book Table</button>
-            <button class="form-tab" data-form-tab="contact">Contact Us</button>
+          <p class="contact-cta-subtext">Reach us directly &mdash; we're happy to help!</p>
+          <div class="contact-cta-group">
+            <a href="tel:+918438111014" class="contact-cta-btn call-btn">
+              <ion-icon name="call-outline"></ion-icon>
+              <span>Call Us</span>
+            </a>
+            <a href="https://wa.me/918438111014" target="_blank" rel="noopener noreferrer" class="contact-cta-btn whatsapp-btn">
+              <ion-icon name="logo-whatsapp"></ion-icon>
+              <span>WhatsApp</span>
+            </a>
           </div>
-
-          <!-- Book Table Form -->
-          <form id="bookTableForm" class="footer-tab-form active">
-
-            <div class="input-wrapper">
-              <input type="text" name="full_name" required placeholder="Your Name" aria-label="Your Name"
-                class="input-field">
-              <input type="tel" name="phone" required placeholder="Phone Number" aria-label="Phone Number"
-                class="input-field">
-            </div>
-
-            <input type="email" name="email" placeholder="Email (Optional)" aria-label="Email"
-              class="input-field" style="margin-block-end:10px;">
-
-            <div class="input-wrapper">
-              <select name="total_person" aria-label="Total person" class="input-field">
-                <option value="">No. of Persons</option>
-                <option value="1">1 Person</option>
-                <option value="2">2 Persons</option>
-                <option value="3">3 Persons</option>
-                <option value="4">4 Persons</option>
-                <option value="5">5 Persons</option>
-                <option value="6">6 Persons</option>
-              </select>
-              <input type="date" name="booking_date" required aria-label="Reservation date" class="input-field">
-            </div>
-
-            <div class="input-wrapper">
-              <input type="time" name="booking_time" required aria-label="Reservation time" class="input-field">
-            </div>
-
-            <textarea name="message" placeholder="Message (Optional)" aria-label="Message" class="input-field"></textarea>
-
-            <button type="submit" class="btn">Book Table</button>
-
-          </form>
-
-          <!-- Contact Us Form -->
-          <form id="contactUsForm" class="footer-tab-form">
-
-            <div class="input-wrapper">
-              <input type="text" name="full_name" required placeholder="Your Name" aria-label="Your Name"
-                class="input-field">
-              <input type="tel" name="phone" required placeholder="Phone Number" aria-label="Phone Number"
-                class="input-field">
-            </div>
-
-            <input type="email" name="email" placeholder="Email (Optional)" aria-label="Email"
-              class="input-field" style="margin-block-end:10px;">
-
-            <textarea name="message" required placeholder="Your Message" aria-label="Message" class="input-field"></textarea>
-
-            <button type="submit" class="btn">Send Message</button>
-
-          </form>
+          <div class="contact-social-group">
+            <a href="https://www.facebook.com/www.cafemug" class="contact-social-btn" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-facebook"></ion-icon></a>
+            <a href="#" class="contact-social-btn" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-twitter"></ion-icon></a>
+            <a href="https://www.instagram.com/cafemug_tirupur?igsh=a2dvdnI2Mmk0b3dx" class="contact-social-btn" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-instagram"></ion-icon></a>
+          </div>
 
         </div>
 
