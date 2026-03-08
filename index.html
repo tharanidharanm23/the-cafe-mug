@@ -1286,9 +1286,7 @@
     - #BACK TO TOP
   -->
 
-  <a href="#top" class="back-top-btn" aria-label="Back to top" data-back-top-btn>
-    <ion-icon name="chevron-up"></ion-icon>
-  </a>
+
 
 
 
@@ -1307,18 +1305,35 @@
     <ul class="my-list-items" id="myListItems">
       <!-- items injected by JS -->
     </ul>
-    <p class="my-list-empty" id="myListEmpty">No items added yet.<br>Tap the <ion-icon name="bookmark-outline"></ion-icon> icon on any dish!</p>
+    <div class="my-list-empty" id="myListEmpty">
+      <ion-icon name="bookmark-outline"></ion-icon>
+      <p class="my-list-empty-title">Your list is empty</p>
+      <p class="my-list-empty-sub">Tap <ion-icon name="add-circle-outline"></ion-icon> on any dish to save it here</p>
+    </div>
     <div class="my-list-footer">
-      <button class="btn my-list-clear-btn" id="myListClearBtn" style="display:none;">Clear All</button>
+      <div class="my-list-footer-top" id="myListFooterTop" style="display:none;">
+        <button class="my-list-clear-btn" id="myListClearBtn">Clear All</button>
+      </div>
       <button class="my-list-total-btn" id="myListTotalBtn" style="display:none;">Show Total</button>
     </div>
   </div>
 
-  <button class="my-list-fab" id="myListFab" aria-label="Open my list">
+  <button class="my-list-fab" id="myListFab" aria-label="Open my list" style="display:none;">
     <ion-icon name="bookmark-outline"></ion-icon>
-    <span class="my-list-fab-label">My List</span>
-    <span class="my-list-badge" id="myListBadge" style="display:none;">0</span>
+    <span class="my-list-badge" id="myListBadge">0</span>
   </button>
+
+  <!-- Clear All confirm modal -->
+  <div class="clear-confirm-overlay" id="clearConfirmOverlay"></div>
+  <div class="clear-confirm-modal" id="clearConfirmModal" role="dialog" aria-modal="true">
+    <div class="clear-confirm-icon"><ion-icon name="trash-outline"></ion-icon></div>
+    <h4 class="clear-confirm-title">Clear your list?</h4>
+    <p class="clear-confirm-sub">All saved items will be removed. This can't be undone.</p>
+    <div class="clear-confirm-actions">
+      <button class="clear-confirm-no" id="clearConfirmNo">Cancel</button>
+      <button class="clear-confirm-yes" id="clearConfirmYes">Yes, Clear All</button>
+    </div>
+  </div>
 
   <!-- 
     - custom js link

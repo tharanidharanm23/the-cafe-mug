@@ -85,15 +85,12 @@ for (let i = 0; i < navbarLinks.length; i++) {
  */
 
 const header = document.querySelector("[data-header]");
-const backTopBtn = document.querySelector("[data-back-top-btn]");
 
 window.addEventListener("scroll", function () {
   if (window.scrollY >= 100) {
     header.classList.add("active");
-    backTopBtn.classList.add("active");
   } else {
     header.classList.remove("active");
-    backTopBtn.classList.remove("active");
   }
 });
 
@@ -693,12 +690,27 @@ document.addEventListener('click', function (e) {
 const myListFab     = document.getElementById('myListFab');
 const myListPanel   = document.getElementById('myListPanel');
 const myListOverlay = document.getElementById('myListOverlay');
-const myListCloseBtn = document.getElementById('myListCloseBtn');
-const myListItemsEl = document.getElementById('myListItems');
-const myListEmpty   = document.getElementById('myListEmpty');
-const myListBadge   = document.getElementById('myListBadge');
-const myListClearBtn = document.getElementById('myListClearBtn');
-const myListTotalBtn = document.getElementById('myListTotalBtn');
+const myListCloseBtn  = document.getElementById('myListCloseBtn');
+const myListItemsEl   = document.getElementById('myListItems');
+const myListEmpty     = document.getElementById('myListEmpty');
+const myListBadge     = document.getElementById('myListBadge');
+const myListClearBtn  = document.getElementById('myListClearBtn');
+const myListTotalBtn  = document.getElementById('myListTotalBtn');
+const myListFooterTop  = document.getElementById('myListFooterTop');
+const clearConfirmOverlay = document.getElementById('clearConfirmOverlay');
+const clearConfirmModal   = document.getElementById('clearConfirmModal');
+const clearConfirmYes     = document.getElementById('clearConfirmYes');
+const clearConfirmNo      = document.getElementById('clearConfirmNo');
+
+function openClearConfirm() {
+  clearConfirmOverlay.classList.add('active');
+  clearConfirmModal.classList.add('active');
+}
+
+function closeClearConfirm() {
+  clearConfirmOverlay.classList.remove('active');
+  clearConfirmModal.classList.remove('active');
+}
 var showPriceMode = false;
 
 // In-memory list [{name, count}] — persisted in sessionStorage
@@ -876,12 +888,8 @@ function saveList() {
 
 function updateBadge() {
   var total = myList.reduce(function (s, i) { return s + i.count; }, 0);
-  if (total > 0) {
-    myListBadge.textContent = total;
-    myListBadge.style.display = '';
-  } else {
-    myListBadge.style.display = 'none';
-  }
+  myListBadge.textContent = total;
+  myListFab.style.display = total > 0 ? '' : 'none';
 }
 
 function renderList() {
@@ -891,7 +899,7 @@ function renderList() {
 
   if (myList.length === 0) {
     myListEmpty.style.display = '';
-    myListClearBtn.style.display = 'none';
+    myListFooterTop.style.display = 'none';
     myListTotalBtn.style.display = 'none';
     showPriceMode = false;
     myListTotalBtn.textContent = 'Show Total';
@@ -900,6 +908,7 @@ function renderList() {
   }
 
   myListEmpty.style.display = 'none';
+  myListFooterTop.style.display = '';
   myListClearBtn.style.display = '';
   myListTotalBtn.style.display = '';
 
@@ -977,6 +986,7 @@ function openPanel() {
   myListPanel.classList.add('active');
   myListOverlay.classList.add('active');
   myListPanel.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
   renderList();
 }
 
@@ -984,6 +994,7 @@ function closePanel() {
   myListPanel.classList.remove('active');
   myListOverlay.classList.remove('active');
   myListPanel.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
 }
 
 myListFab.addEventListener('click', openPanel);
@@ -1033,8 +1044,14 @@ myListItemsEl.addEventListener('click', function (e) {
   saveList(); updateBadge(); renderList();
 });
 
-// Clear all
-myListClearBtn.addEventListener('click', function () {
+// Clear All — open confirm modal
+myListClearBtn.addEventListener('click', openClearConfirm);
+
+clearConfirmNo.addEventListener('click', closeClearConfirm);
+clearConfirmOverlay.addEventListener('click', closeClearConfirm);
+
+clearConfirmYes.addEventListener('click', function () {
+  closeClearConfirm();
   myList = [];
   showPriceMode = false;
   myListTotalBtn.textContent = 'Show Total';
@@ -1047,6 +1064,7 @@ myListClearBtn.addEventListener('click', function () {
   });
   updateComboCardBtns();
   renderList();
+  closePanel();
 });
 
 // Show Total toggle

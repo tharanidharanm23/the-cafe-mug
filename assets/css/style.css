@@ -1664,29 +1664,6 @@ body.active { overflow: hidden; }
   #BACK TO TOP
 \*-----------------------------------*/
 
-.back-top-btn {
-  position: fixed;
-  bottom: 10px;
-  right: 20px;
-  background-color: var(--deep-saffron);
-  color: var(--white);
-  padding: 15px;
-  border-radius: 50%;
-  box-shadow: var(--shadow-1);
-  z-index: 2;
-  opacity: 0;
-  visibility: hidden;
-  transition: var(--transition-1);
-}
-
-.back-top-btn.active {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(-10px);
-}
-
-.back-top-btn:is(:hover, :focus) { background-color: var(--rich-black-fogra-29); }
-
 
 
 
@@ -2106,10 +2083,7 @@ body.active { overflow: hidden; }
    * BACK TO TOP
    */
 
-  .back-top-btn {
-    bottom: 20px;
-    right: 30px;
-  }
+
 
 }
 
@@ -3374,15 +3348,13 @@ body.active { overflow: hidden; }
   z-index: 1000;
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 12px 20px;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
   background: var(--deep-saffron);
   color: var(--white);
-  border-radius: 50px;
+  border-radius: 50%;
   box-shadow: 0 4px 20px hsla(32, 100%, 59%, 0.45);
-  font-family: var(--ff-rubik);
-  font-weight: var(--fw-600);
-  font-size: var(--fs-4);
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -3392,21 +3364,23 @@ body.active { overflow: hidden; }
   box-shadow: 0 6px 24px hsla(32, 100%, 59%, 0.55);
 }
 
-.my-list-fab ion-icon { font-size: 2rem; }
-
-.my-list-fab-label { display: inline; }
+.my-list-fab ion-icon { font-size: 2.4rem; }
 
 .my-list-badge {
-  min-width: 22px;
-  height: 22px;
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 20px;
+  height: 20px;
   padding-inline: 4px;
-  background: var(--white);
-  color: var(--deep-saffron);
+  background: var(--cinnabar);
+  color: var(--white);
   border-radius: 50px;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: var(--fw-700);
-  line-height: 22px;
+  line-height: 20px;
   text-align: center;
+  pointer-events: none;
 }
 
 /* Overlay */
@@ -3610,33 +3584,167 @@ body.active { overflow: hidden; }
 
 /* Empty state */
 .my-list-empty {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   padding: 60px 30px;
+  text-align: center;
+}
+
+.my-list-empty > ion-icon {
+  font-size: 4.8rem;
+  color: var(--cultured);
+  stroke: var(--sonic-silver);
+  opacity: 0.6;
+}
+
+.my-list-empty-title {
+  font-family: var(--ff-rubik);
+  font-size: var(--fs-3);
+  font-weight: var(--fw-600);
+  color: var(--rich-black-fogra-29);
+}
+
+.my-list-empty-sub {
+  font-size: var(--fs-5);
   color: var(--sonic-silver);
-  font-size: var(--fs-4);
-  line-height: 1.8;
+  line-height: 1.6;
 }
 
-.my-list-empty ion-icon {
+.my-list-empty-sub ion-icon {
   vertical-align: middle;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
+  color: var(--deep-saffron);
 }
 
-/* Clear All button */
+/* Clear All button — right-aligned text link above Show Total */
 .my-list-clear-btn {
-  --bg-color: transparent;
-  --color: var(--cinnabar);
-  border: 2px solid var(--cinnabar) !important;
-  color: var(--cinnabar) !important;
-  flex-shrink: 0;
+  background: none;
+  border: none;
+  padding: 4px 0;
+  font-family: var(--ff-rubik);
+  font-size: var(--fs-5);
+  font-weight: var(--fw-600);
+  color: var(--cinnabar);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: color var(--transition-1);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .my-list-clear-btn:hover {
-  --bg-color: var(--cinnabar);
-  --color: var(--white);
-  background-color: var(--cinnabar) !important;
-  color: var(--white) !important;
+  color: hsl(4, 90%, 45%);
 }
+
+/* Footer top row — holds Clear All right-aligned */
+.my-list-footer-top {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-block-end: 10px;
+  min-height: 28px;
+}
+
+/* Clear All confirm modal */
+.clear-confirm-overlay {
+  position: fixed;
+  inset: 0;
+  background: hsla(0, 0%, 0%, 0);
+  z-index: 1200;
+  pointer-events: none;
+  transition: background 0.22s ease;
+}
+
+.clear-confirm-overlay.active {
+  background: hsla(0, 0%, 0%, 0.55);
+  pointer-events: auto;
+}
+
+.clear-confirm-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -44%) scale(0.92);
+  width: min(320px, calc(100vw - 32px));
+  background: var(--white);
+  border-radius: 20px;
+  padding: 32px 28px 28px;
+  box-shadow: 0 20px 60px hsla(0, 0%, 0%, 0.22);
+  z-index: 1201;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s ease, transform 0.22s ease;
+  text-align: center;
+}
+
+.clear-confirm-modal.active {
+  opacity: 1;
+  pointer-events: all;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.clear-confirm-icon {
+  font-size: 3.6rem;
+  color: var(--cinnabar);
+  margin-block-end: 12px;
+  line-height: 1;
+}
+
+.clear-confirm-title {
+  font-family: var(--ff-rubik);
+  font-size: var(--fs-3);
+  font-weight: var(--fw-700);
+  color: var(--rich-black-fogra-29);
+  margin-block-end: 8px;
+}
+
+.clear-confirm-sub {
+  font-family: var(--ff-roboto);
+  font-size: var(--fs-5);
+  color: var(--sonic-silver);
+  line-height: 1.6;
+  margin-block-end: 24px;
+}
+
+.clear-confirm-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.clear-confirm-no {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1.5px solid var(--cultured);
+  background: transparent;
+  color: var(--sonic-silver);
+  font-family: var(--ff-rubik);
+  font-size: var(--fs-4);
+  font-weight: var(--fw-600);
+  cursor: pointer;
+  transition: all var(--transition-1);
+}
+
+.clear-confirm-no:hover { background: var(--cultured); color: var(--rich-black-fogra-29); }
+
+.clear-confirm-yes {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: var(--cinnabar);
+  color: var(--white);
+  font-family: var(--ff-rubik);
+  font-size: var(--fs-4);
+  font-weight: var(--fw-700);
+  cursor: pointer;
+  transition: background var(--transition-1);
+}
+
+.clear-confirm-yes:hover { background: hsl(4, 90%, 45%); }
 
 /* Footer row for clear + total buttons */
 .my-list-footer {
@@ -3647,9 +3755,7 @@ body.active { overflow: hidden; }
   flex-shrink: 0;
 }
 
-.my-list-footer .my-list-clear-btn {
-  margin: 0;
-}
+
 
 /* Show Total button */
 .my-list-total-btn {
@@ -3714,8 +3820,4 @@ body.active { overflow: hidden; }
   color: var(--deep-saffron);
 }
 
-/* Mobile: FAB shrinks to icon only */
-@media (max-width: 480px) {
-  .my-list-fab { padding: 12px 14px; }
-  .my-list-fab-label { display: none; }
-}
+/* Mobile: FAB same circle size */
